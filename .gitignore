@@ -2,4 +2,4 @@ borrar
 
 #Datos sencibles:
 .env
-
+*.env
