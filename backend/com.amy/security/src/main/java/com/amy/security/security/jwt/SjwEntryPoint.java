@@ -15,10 +15,10 @@ import org.springframework.stereotype.Component;
 //Verifica si existe un token, sino devuelve un 401
 
 @Component
-public class JwtEntryPoint implements AuthenticationEntryPoint{
+public class SjwEntryPoint implements AuthenticationEntryPoint{
 	
 	//Para identificar la clase que genera error
-	private final static Logger logger = LoggerFactory.getLogger(JwtEntryPoint.class);
+	private final static Logger logger = LoggerFactory.getLogger(SjwEntryPoint.class);
 	
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse response,

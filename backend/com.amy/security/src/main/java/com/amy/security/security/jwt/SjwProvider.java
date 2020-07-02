@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import com.amy.security.model.SmdPrincipalUser;
+import com.amy.security.model.MdlPrincipalUser;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -19,8 +19,8 @@ import io.jsonwebtoken.UnsupportedJwtException;
 
 //Genera un token, con metodos de validacion
 @Component
-public class JwtProvider {
-	private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
+public class SjwProvider {
+	private final static Logger logger = LoggerFactory.getLogger(SjwProvider.class);
 
 	@Value("${jwt.secret}")
 	private String secret;
@@ -28,7 +28,7 @@ public class JwtProvider {
 	private int expiration;
 	
 	public String generateToken(Authentication authentication) {
-		SmdPrincipalUser smdPrincipalUser = (SmdPrincipalUser) authentication.getPrincipal();
+		MdlPrincipalUser smdPrincipalUser = (MdlPrincipalUser) authentication.getPrincipal();
 
 		return Jwts.builder()
 		.setSubject(smdPrincipalUser.getUsername())

@@ -15,26 +15,26 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.amy.security.model.SmdUser;
+import com.amy.security.model.MdlUser;
 
 //import com.amy.security.security.model.model.SmdUser;
 //import com.amy.security.security.service.repository.SsCUserRepository;
 
 @Service
-public interface SsiUserService extends UserDetailsService{
+public interface SntUser extends UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException;	
  
 	//void insert(User SmdUser);
-	SmdUser save(SmdUser SmdUser);
+	MdlUser save(MdlUser SmdUser);
 	//User insertById(Integer id, User SmdUser);
 	//void update(User SmdUser);
 	//User updateById(Integer id, User SmdUser);
-	void delete(SmdUser SmdUser);
+	void delete(MdlUser SmdUser);
 	void deleteById(Integer id);
-	Optional <SmdUser> findById(Integer id);
-	Optional <SmdUser> findByUserName(String userName);
-	List<SmdUser> list();
+	Optional <MdlUser> findById(Integer id);
+	Optional <MdlUser> findByUserName(String userName);
+	List<MdlUser> list();
     boolean existsById(int id);
     boolean existsByUserName(String userName);
     boolean existsByEmail(String email);

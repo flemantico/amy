@@ -5,17 +5,17 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.amy.security.model.SmdRole;
+import com.amy.security.model.MdlRole;
 import com.amy.security.util.enumerators.SenRoleName;
 
 @Service
-public interface SsiRoleService {
-	SmdRole save(SmdRole smcRole);
-	void delete(SmdRole smcRole);
+public interface SntRole {
+	MdlRole save(MdlRole smdRole);
+	void delete(MdlRole smdRole);
 	void deleteById(Integer id);
-	Optional <SmdRole> findById(Integer id);
-	Optional <SmdRole> findBySenRoleName(SenRoleName senRoleName);
-	List<SmdRole> list();
+	Optional <MdlRole> findById(Integer id);
+	Optional <MdlRole> findBySenRoleName(SenRoleName senRoleName);
+	List<MdlRole> list();
     boolean existsById(int id);
     boolean existsBySenRoleName(SenRoleName senRoleName);
 }

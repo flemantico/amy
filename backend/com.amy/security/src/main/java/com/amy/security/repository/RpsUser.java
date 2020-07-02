@@ -5,12 +5,12 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.amy.security.model.SmdUser;
+import com.amy.security.model.MdlUser;
 
 @Repository
-public interface SrpUserRepository extends JpaRepository<SmdUser, Integer>{
+public interface RpsUser extends JpaRepository<MdlUser, Integer>{
 	//Optional<User> findByUserName(String userName);
-	Optional <SmdUser> findByUserName(String userName);
+	Optional <MdlUser> findByUserName(String userName);
     boolean existsByUserName(String userName);
     boolean existsByEmail(String email);
 	//Optional<SmCUser> findById(Long id);

@@ -22,7 +22,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
-public class SmdUser {
+public class MdlUser {
 	/*
 	Debe extender de persona, persona debe extender de base (usuario, alta, modificacion, etc.)
 	*/
@@ -55,13 +55,13 @@ public class SmdUser {
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "users_id", referencedColumnName = "id"),
 	inverseJoinColumns = @JoinColumn(name = "roles_id", referencedColumnName = "id"))
-	private Set<SmdRole> smdRoles = new HashSet<>();
+	private Set<MdlRole> smdRoles = new HashSet<>();
 	
-	public SmdUser() {
+	public MdlUser() {
 		//super();
 	}
 	
-	public SmdUser(
+	public MdlUser(
 			@NotNull @NotBlank @Size(min = 4, max = 15, message = "The name must be between 4 and 15 characters.") String name,
 			@NotNull @NotBlank @Email String email,
 			@NotNull @NotBlank @Size(min = 4, max = 15, message = "The user name must be between 4 and 15 characters.") String userName,
@@ -109,10 +109,10 @@ public class SmdUser {
 		this.password = password;
 	}
 
-	public Set<SmdRole> getSmdRoles() {
+	public Set<MdlRole> getSmdRoles() {
 		return smdRoles;
 	}
-	public void setSmdRoles(Set<SmdRole> smdRoles) {
+	public void setSmdRoles(Set<MdlRole> smdRoles) {
 		this.smdRoles = smdRoles;
 	}
 

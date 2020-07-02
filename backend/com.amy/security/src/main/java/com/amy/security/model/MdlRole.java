@@ -14,7 +14,7 @@ import com.amy.security.util.enumerators.SenRoleName;
 
 @Entity
 @Table(name = "roles")
-public class SmdRole {
+public class MdlRole {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	//@NotNull 
@@ -28,10 +28,10 @@ public class SmdRole {
 	//@Column(unique = true, nullable = false)
 	private SenRoleName senRoleName;
 
-	public SmdRole() {
+	public MdlRole() {
 	}
 
-	public SmdRole(@NotNull SenRoleName senRoleName) {
+	public MdlRole(@NotNull SenRoleName senRoleName) {
 		this.senRoleName = senRoleName;
 	}
 
@@ -47,7 +47,7 @@ public class SmdRole {
 		return senRoleName;
 	}
 
-	public void seSenRoleName(SenRoleName senRoleName) {
+	public void setSenRoleName(SenRoleName senRoleName) {
 		this.senRoleName = senRoleName;
 	}	
 }

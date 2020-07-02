@@ -7,26 +7,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.amy.security.model.SmdRole;
-import com.amy.security.repository.SrpRoleRepository;
-import com.amy.security.service.interfaz.SsiRoleService;
+import com.amy.security.model.MdlRole;
+import com.amy.security.repository.RpsRole;
+import com.amy.security.service.interfaz.SntRole;
 import com.amy.security.util.enumerators.SenRoleName;
 
 
 @Service
 @Transactional
-public class SssRoleService implements SsiRoleService{
+public class SsrRole implements SntRole{
 
 	@Autowired
-	private SrpRoleRepository srpRoleRepository;
+	private RpsRole rpsRole;
 	
 	@Override
-	public SmdRole save(SmdRole smcRole) {
-		return srpRoleRepository.save(smcRole);
+	public MdlRole save(MdlRole smdRole) {
+		return rpsRole.save(smdRole);
 	}
 
 	@Override
-	public void delete(SmdRole smcRole) {
+	public void delete(MdlRole smdRole) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -38,18 +38,18 @@ public class SssRoleService implements SsiRoleService{
 	}
 
 	@Override
-	public Optional<SmdRole> findById(Integer id) {
+	public Optional<MdlRole> findById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<SmdRole> findBySenRoleName(SenRoleName roleName) {
-		return srpRoleRepository.findBySenRoleName(roleName);
+	public Optional<MdlRole> findBySenRoleName(SenRoleName senRoleName) {
+		return rpsRole.findBySenRoleName(senRoleName);
 	}	
 	
 	@Override
-	public List<SmdRole> list() {
+	public List<MdlRole> list() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -60,7 +60,7 @@ public class SssRoleService implements SsiRoleService{
 	}
 	
 	@Override
-	public boolean existsBySenRoleName(SenRoleName roleName) {
+	public boolean existsBySenRoleName(SenRoleName senRoleName) {
 		return false;
 	}
 	

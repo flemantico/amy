@@ -15,19 +15,19 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.amy.security.service.interfaz.SsiUserService;
+import com.amy.security.service.interfaz.SntUser;
 
 
 //Se ejecuta por cada peticion y verifica su validez para permitir el acceso al recurso
-public class JwtTokenFilter extends OncePerRequestFilter{
+public class SjwTokenFilter extends OncePerRequestFilter{
 
-	private final static Logger logger = LoggerFactory.getLogger(JwtTokenFilter.class);
+	private final static Logger logger = LoggerFactory.getLogger(SjwTokenFilter.class);
 
 	@Autowired
-	JwtProvider jwtProvider;
+	SjwProvider swtProvider;
 	
 	@Autowired
-	SsiUserService ssiUserService;
+	SntUser sntUser;
 	
 	//Verifica el token y genera la autenticacion
 	@Override
@@ -36,10 +36,10 @@ public class JwtTokenFilter extends OncePerRequestFilter{
 		try {
 			String token = getToken(request);
 			logger.warn(token);
-			if(token != null && jwtProvider.validateToken(token)) {
-				String userName = jwtProvider.getUserNameFromToken(token);
+			if(token != null && swtProvider.validateToken(token)) {
+				String userName = swtProvider.getUserNameFromToken(token);
 				
-				UserDetails userDetails = ssiUserService.loadUserByUsername(userName);
+				UserDetails userDetails = sntUser.loadUserByUsername(userName);
 				
 				UsernamePasswordAuthenticationToken authentication =
 				new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());

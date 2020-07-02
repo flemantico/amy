@@ -1,5 +1,10 @@
 package com.amy.security.util.data;
 
+public class SutCreateRole{
+
+}
+
+/*
 import com.amy.security.model.SmdRole;
 import com.amy.security.service.implement.SssRoleService;
 import com.amy.security.util.enumerators.SenRoleName;
@@ -26,3 +31,4 @@ public class SutCreateRole implements CommandLineRunner{
 		sssRoleService.save(rolGuest);
 	}
 }
+*/

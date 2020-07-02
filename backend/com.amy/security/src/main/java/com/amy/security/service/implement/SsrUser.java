@@ -16,76 +16,76 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.amy.security.model.SmdPrincipalUser;
-import com.amy.security.model.SmdUser;
-import com.amy.security.repository.SrpUserRepository;
-import com.amy.security.service.interfaz.SsiUserService;
+import com.amy.security.model.MdlPrincipalUser;
+import com.amy.security.model.MdlUser;
+import com.amy.security.repository.RpsUser;
+import com.amy.security.service.interfaz.SntUser;
 
 
 @Service
 @Transactional
-public class SssUserService implements SsiUserService{
-	private static Logger LOG = LoggerFactory.getLogger(SssUserService.class);
+public class SsrUser implements SntUser{
+	private static Logger LOG = LoggerFactory.getLogger(SsrUser.class);
 
 	@Autowired
-	private SrpUserRepository srpUserRepository;
+	private RpsUser rpsUser;
 
 	@Override
-	public SmdUser save(SmdUser smdUser) {
+	public MdlUser save(MdlUser smdUser) {
 		LOG.trace("insert");
-		return srpUserRepository.save(smdUser);
+		return rpsUser.save(smdUser);
 	}
 	
 	@Override
-	public void delete(SmdUser smdUser) {
+	public void delete(MdlUser smdUser) {
 		LOG.trace("delete");
-		srpUserRepository.delete(smdUser);
+		rpsUser.delete(smdUser);
 	}
 
 	@Override
 	public void deleteById(Integer id) {
 		LOG.trace("deleteById");
-		srpUserRepository.deleteById(id);
+		rpsUser.deleteById(id);
 	}
 
 	@Override
-	public Optional <SmdUser> findById(Integer id) {
+	public Optional <MdlUser> findById(Integer id) {
 		LOG.trace("getOne");
-		return srpUserRepository.findById(id);
+		return rpsUser.findById(id);
 	}
 
 	@Override
-	public List<SmdUser> list() {
+	public List<MdlUser> list() {
 		LOG.trace("list");		
-		return srpUserRepository.findAll();
+		return rpsUser.findAll();
 	}
 
 	@Override
 	//public Optional <User> findByUserName(String userName) {
-	public Optional <SmdUser> findByUserName(String userName) {
+	public Optional <MdlUser> findByUserName(String userName) {
 		LOG.trace("findByUserName");		
-		return srpUserRepository.findByUserName(userName);
+		return rpsUser.findByUserName(userName);
 	}
 	
 	@Override
     public boolean existsById(int id){
-        return srpUserRepository.existsById(id);
+        return rpsUser.existsById(id);
     }
 
     @Override
     public boolean existsByUserName(String userName){
-        return srpUserRepository.existsByUserName(userName);
+        return rpsUser.existsByUserName(userName);
     }
 
     @Override
     public boolean existsByEmail(String email){
-        return srpUserRepository.existsByEmail(email);
+        return rpsUser.existsByEmail(email);
     }
     
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		LOG.trace("loadUserByUsername");
-		SmdUser smdUser = srpUserRepository.findByUserName(userName).get();
+		MdlUser smdUser = rpsUser.findByUserName(userName).get();
 
 		//List<GrantedAuthority> roles = new ArrayList<>();
 		//roles.add(new SimpleGrantedAuthority("ADMIN"));
@@ -96,7 +96,7 @@ public class SssUserService implements SsiUserService{
 		
 		//return userDetails;
 		
-		return SmdPrincipalUser.build(smdUser);
+		return MdlPrincipalUser.build(smdUser);
 		
 		
 		

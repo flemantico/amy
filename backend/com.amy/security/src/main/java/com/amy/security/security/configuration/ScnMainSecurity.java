@@ -16,24 +16,24 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 //import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.amy.security.security.jwt.JwtEntryPoint;
-import com.amy.security.security.jwt.JwtTokenFilter;
-import com.amy.security.service.interfaz.SsiUserService;
+import com.amy.security.security.jwt.SjwEntryPoint;
+import com.amy.security.security.jwt.SjwTokenFilter;
+import com.amy.security.service.interfaz.SntUser;
 
 //
 @Configuration
 @EnableWebSecurity
 //Para indicar a que metodos puede accesder solo el administrador.
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class ScfMainSecurity extends WebSecurityConfigurerAdapter{
+public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
 	@Autowired
-	SsiUserService ssiUser;
+	SntUser ssiUser;
 	@Autowired
-	JwtEntryPoint jwtEntryPoint;
+	SjwEntryPoint swtEntryPoint;
 	
 	@Bean
-	public JwtTokenFilter jwtTokenFilter() {
-		return new JwtTokenFilter();
+	public SjwTokenFilter jwtTokenFilter() {
+		return new SjwTokenFilter();
 	}
 
 //	@Bean
@@ -75,7 +75,7 @@ public class ScfMainSecurity extends WebSecurityConfigurerAdapter{
 		.anyRequest().authenticated()
 		.and()
 		.exceptionHandling()
-		.authenticationEntryPoint(jwtEntryPoint)
+		.authenticationEntryPoint(swtEntryPoint)
 		.and()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 				

@@ -9,7 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 //La utiliza spring security para oibtener los datos y privilegios de usuario
-public class SmdPrincipalUser implements UserDetails{
+public class MdlPrincipalUser implements UserDetails{
 	/**
 	 * 
 	 */
@@ -18,18 +18,18 @@ public class SmdPrincipalUser implements UserDetails{
 	private String password;
 	private Collection<? extends GrantedAuthority> authorities;
 	
-	public SmdPrincipalUser(String userName, String password, Collection<? extends GrantedAuthority> authorities) {
+	public MdlPrincipalUser(String userName, String password, Collection<? extends GrantedAuthority> authorities) {
 		this.userName = userName;
 		this.password = password;
 		this.authorities = authorities;
 	}
 
-	public static SmdPrincipalUser build(SmdUser user) {
+	public static MdlPrincipalUser build(MdlUser user) {
 		List<GrantedAuthority> authorities =
 		user.getSmdRoles().stream()
 		.map(role -> new SimpleGrantedAuthority(role.getSenRoleName().name())).collect(Collectors.toList());
 	
-		return new SmdPrincipalUser(user.getUserName(), user.getPassword(), authorities);
+		return new MdlPrincipalUser(user.getUserName(), user.getPassword(), authorities);
 	}
 	
 	
