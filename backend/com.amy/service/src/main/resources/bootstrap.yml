@@ -15,9 +15,9 @@ spring:
                     password: 
 
 # Spring properties in case you use different profiles
-    profiles: default
-    application:
-        name: service
+#    profiles: default
+#    application:
+#        name: service
 
     security:
         user:
