@@ -9,7 +9,7 @@ spring:
             server:
                 git:
                     uri: https://github.com/flemantico/amy.git
-                    searchPaths: config
+                    search-paths: config
 
                     username: flemantico
                     password: 19FlemA02
