@@ -1,0 +1,25 @@
+# HTTP Server
+server:
+    port: 8082
+
+# Spring Cloud Config Server Repository
+spring:
+    cloud:
+        config:
+            server:
+                git:
+                    uri: git@github.com:flemantico/amy.git
+                    searchPaths: config
+
+                    username: flemantico
+                    password: 19FlemA02
+
+# Spring properties in case you use different profiles
+    profiles: default
+    application:
+        name: service
+
+    security:
+        user:
+            name: root
+            password: s3cr3t
