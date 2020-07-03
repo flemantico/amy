@@ -41,6 +41,13 @@ jwt:
     expiration: 36000
 
 #----------------------------------------------------------------------------------------------------------------------------------------
+#EUREKA
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8001/eureka/
+
+#----------------------------------------------------------------------------------------------------------------------------------------
 #TODO
 ##ver porque da error
 ##spring.jpa.hibernate.naming.physical-strategy=org.hibernate.cfg.ImprovedNamingStrategy
@@ -60,3 +67,4 @@ jwt:
 logging:
     pattern:
         console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN: -%5p} %m%n"
+
