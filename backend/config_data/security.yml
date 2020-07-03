@@ -26,6 +26,8 @@ spring:
             hibernate:
                 dialect: org.hibernate.dialect.MySQL5Dialect
                 dll-auto: true
+                use_sql_comments: false
+                format_sql: false
     main:
         banner-mode: off
     output:
