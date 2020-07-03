@@ -26,20 +26,15 @@ public class SsrRole implements SntRole{
 	}
 
 	@Override
-	public void delete(MdlRole smdRole) {
-		// TODO Auto-generated method stub
-		
+	public void delete(MdlRole smdRole) {	
 	}
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public Optional<MdlRole> findById(Integer id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -50,7 +45,6 @@ public class SsrRole implements SntRole{
 	
 	@Override
 	public List<MdlRole> list() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
