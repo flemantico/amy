@@ -4,7 +4,15 @@ server:
 
 spring:
     jpa:
-       database: MYSQL
+        database: MYSQL
+        show-sql: true
+        #hibernate: 
+        #ddl-auto: true
+        properties: 
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
+                dll-auto: true
+
 
 # DataSource settings: set here your own configurations for the database 
 # connection. In this example we have "netgloo_blog" as database name and 
@@ -15,12 +23,13 @@ spring:
         username: java
         password: 19-FlemanticO-02
 
+
 # Show or not log for each sql query
-        show-sql: true
+    #show-sql: true
 
 # Hibernate ddl auto (create, create-drop, update), *****SOLO DESARROLLO*****
-        hibernate:
-            ddl-auto: update
+    #hibernate:
+    #    ddl-auto: update
 
 #spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
 
@@ -31,9 +40,9 @@ spring:
 # stripped before adding them to the entity manager)
 # The SQL dialect makes Hibernate generate better SQL for the chosen database
 #spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.MySQL5Dialect
+        #properties:
+        #    hibernate:
+        #        dialect: org.hibernate.dialect.MySQL5Dialect
 
 # Keep the connection alive if idle for a long time (needed in production)
 ##spring.datasource.testWhileIdle = true
