@@ -11,8 +11,8 @@ spring:
                     uri: https://github.com/flemantico/amy.git
                     search-paths: backend/com.amy/config
 
-                    username: flemantico
-                    password: 19FlemA02
+                    username: 
+                    password: 
 
 # Spring properties in case you use different profiles
     profiles: default
