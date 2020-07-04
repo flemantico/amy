@@ -1,0 +1,71 @@
+#----------------------------------------------------------------------------------------------------------------------------------------
+#SERVER
+server:
+    #port: 8101
+    #port: ${PORT:${SERVER_PORT:0}}
+    port: 0
+
+spring:
+    profiles: default
+    application:
+        name: security
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+#DATABASE
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        username: java
+        password: 19-FlemanticO-02
+        url: jdbc:mysql://localhost:3306/amy_security?useSSL=false
+        dbcp2:
+            validation-query: SELECT 1
+    jpa:
+        database: MYSQL
+        show-sql: true
+        generate-ddl: true
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
+                dll-auto: true
+                use_sql_comments: false
+                format_sql: false
+    main:
+        banner-mode: off
+    output:
+        ansi:
+            enabled: ALWAYS
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+#SECURITY
+jwt:
+    secret: secret
+    expiration: 36000
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+#EUREKA
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8001/eureka/
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+#TODO
+##ver porque da error
+##spring.jpa.hibernate.naming.physical-strategy=org.hibernate.cfg.ImprovedNamingStrategy
+
+
+#Configuración para el log ---------------------------------------------------------------------------------------------------------------------
+
+    main:
+        banner-mode: off 
+    output:
+        ansi:
+            enabled: ALWAYS
+#%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN: -%5p} %m%n
+#%clr(%d{yy-MM-dd E HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(${PID}){faint} %clr(---){faint} %clr([%8.15t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n
+#Default
+#%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}
+logging:
+    pattern:
+        console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN: -%5p} %m%n"
+
