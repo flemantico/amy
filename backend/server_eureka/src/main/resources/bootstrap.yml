@@ -1,8 +1,8 @@
 spring:
-    application:
-        name: server_eureka
-    cloud:
-        config:
-            uri: http://localhost:8000
-            username: root
-            password: s3cr3t
+  application:
+    name: server_eureka
+  cloud:
+    config:
+      uri: http://localhost:8000
+      name: root
+      password: s3cr3t
