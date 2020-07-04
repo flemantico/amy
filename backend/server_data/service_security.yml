@@ -8,7 +8,7 @@ server:
 spring:
     profiles: default
     application:
-        name: security
+        name: service_security
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 #DATABASE
