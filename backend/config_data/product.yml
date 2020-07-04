@@ -15,7 +15,7 @@ spring:
         driver-class-name: com.mysql.cj.jdbc.Driver
         username: java
         password: 19-FlemanticO-02
-        url: jdbc:mysql://localhost:3306/amy_security?useSSL=false
+        url: jdbc:mysql://localhost:3306/amy_product?useSSL=false
         dbcp2:
             validation-query: SELECT 1
     jpa:
