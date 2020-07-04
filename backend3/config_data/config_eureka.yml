@@ -1,5 +1,5 @@
-spring:
-    profiles: default
+#spring:
+#    profiles: default
 server:
   port: 8001
 eureka:
