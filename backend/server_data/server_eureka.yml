@@ -1,9 +1,7 @@
 spring:
-  profiles: default
-
+    profiles: default
 server:
   port: 8001
-  
 eureka:
   instance:
     hostname: localhost
@@ -11,5 +9,4 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-      defaultZone: http://localhost:8001/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

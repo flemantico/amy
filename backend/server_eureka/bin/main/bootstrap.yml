@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: config_eureka
   cloud:
     config:
       uri: http://localhost:8000
