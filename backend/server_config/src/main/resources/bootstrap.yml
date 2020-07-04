@@ -12,7 +12,8 @@ spring:
           uri: https://github.com/flemantico/amy.git
           username: flemantico
           password: 19FlemA02
-          search-paths: backend/server_data/
+          skipSslValidation: true
+          search-paths: backend/server_data
         native:
           search-locations: classpath:offline-repository/
   security:
