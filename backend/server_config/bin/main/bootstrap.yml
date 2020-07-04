@@ -6,7 +6,7 @@ server:
 spring:
     profiles: default
     application:
-        name: service
+        name: server_config
     cloud:
         config:
             server:
