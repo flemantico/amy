@@ -3,7 +3,7 @@
 server:
     #port: 8101
     #port: ${PORT:${SERVER_PORT:0}}
-    port: 0
+    port: 8100
 
 spring:
     profiles: default
