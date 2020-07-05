@@ -1,9 +1,9 @@
 package com.amy.service_security.dto;
 
-public class dtoMessaje {
+public class DtoMessaje {
 	private String message;
 
-	public dtoMessaje(String message) {
+	public DtoMessaje(String message) {
 		super();
 		this.message = message;
 	}

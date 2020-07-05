@@ -6,17 +6,19 @@ import org.springframework.security.core.GrantedAuthority;
 
 //DataTtransferObject
 //Se usa al hacer loguin y devuelve un Json Web Token
-public class dtoJwt {
+public class DtoJwt {
 	private String token;
 	private String bearer = "Bearer";
 	private String userName;
 	private Collection<? extends GrantedAuthority> authorities;
-	public dtoJwt(String token, String userName, Collection<? extends GrantedAuthority> authorities) {
+
+	public DtoJwt(String token, String userName, Collection<? extends GrantedAuthority> authorities) {
 		super();
 		this.token = token;
 		this.userName = userName;
 		this.authorities = authorities;
 	}
+	
 	public String getToken() {
 		return token;
 	}
@@ -41,6 +43,4 @@ public class dtoJwt {
 	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
 		this.authorities = authorities;
 	}
-	
-	
 }

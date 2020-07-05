@@ -2,7 +2,7 @@ package com.amy.service_security.dto;
 
 import javax.validation.constraints.NotBlank;
 
-public class dtoLoguinUser {
+public class DtoLoguinUser {
 	@NotBlank
 	private String userName;
 	@NotBlank

@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.http.StreamingHttpOutputMessage.Body;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,10 +22,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.amy.service_security.dto.dtoJwt;
-import com.amy.service_security.dto.dtoLoguinUser;
-import com.amy.service_security.dto.dtoMessaje;
-import com.amy.service_security.dto.dtoRegisterUser;
+import com.amy.service_security.dto.DtoJwt;
+import com.amy.service_security.dto.DtoLoguinUser;
+import com.amy.service_security.dto.DtoMessaje;
+import com.amy.service_security.dto.DtoRegisterUser;
 import com.amy.service_security.model.MdlRole;
 import com.amy.service_security.model.MdlUser;
 import com.amy.service_security.security.jwt.SjwProvider;
@@ -80,13 +79,13 @@ public class CrsAuthorithy {
 	 * */
 	@PostMapping("/create")
 	//@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> create(@Valid @RequestBody dtoRegisterUser dtoRegisterUser, BindingResult bindingResult){
+	public ResponseEntity<?> create(@Valid @RequestBody DtoRegisterUser dtoRegisterUser, BindingResult bindingResult){
 		if(bindingResult.hasErrors())
-			return new ResponseEntity<>(new dtoMessaje("campos mal puestos o email invalido"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new DtoMessaje("campos mal puestos o email invalido"), HttpStatus.BAD_REQUEST);
 		if(sntUser.existsByUserName(dtoRegisterUser.getUserName()))
-			return new ResponseEntity<>(new dtoMessaje("el nombre ya existe"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new DtoMessaje("el nombre ya existe"), HttpStatus.BAD_REQUEST);
 		if(sntUser.existsByEmail(dtoRegisterUser.getEmail()))
-			return new ResponseEntity<>(new dtoMessaje("el email ya existe"), HttpStatus.BAD_REQUEST);	
+			return new ResponseEntity<>(new DtoMessaje("el email ya existe"), HttpStatus.BAD_REQUEST);	
 		
 		MdlUser smdUser = new MdlUser(dtoRegisterUser.getName(), dtoRegisterUser.getEmail(), dtoRegisterUser.getUserName(), passwordEncoder.encode(dtoRegisterUser.getPassword()));
 		
@@ -106,20 +105,18 @@ public class CrsAuthorithy {
 		smdUser.setSmdRoles(roles);
 		sntUser.save(smdUser);
 		
-		return new ResponseEntity<>(new dtoMessaje("usuario creado"), HttpStatus.CREATED);
+		return new ResponseEntity<>(new DtoMessaje("usuario creado"), HttpStatus.CREATED);
 	}
 	
 	//http://localhost:8080/auth/v1/login
 	//{"userName": "user", "password": "user"}
 	//para obtener el token
 	@RequestMapping("/login")
-	public ResponseEntity<dtoJwt> login(@Valid @RequestBody dtoLoguinUser dtoLoginUser, BindingResult bindingResult){
+	public ResponseEntity<DtoJwt> login(@Valid @RequestBody DtoLoguinUser dtoLoginUser, BindingResult bindingResult){
 		//dtoMessaje dtomessaje;
 		if (bindingResult.hasErrors()){
-			return new ResponseEntity(new dtoMessaje("campos mal puestos"), HttpStatus.BAD_REQUEST);
-
-			//dtomessaje = new dtoMessaje("campos mal puestos");
-			//return new ResponseEntity(dtomessaje, HttpStatus.BAD_REQUEST);
+			DtoMessaje dtoMessage = new DtoMessaje("campos mal puestos");
+			return new ResponseEntity(dtoMessage, HttpStatus.BAD_REQUEST);
 		}
 		
 		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(dtoLoginUser.getUserName(), dtoLoginUser.getPassword()));
@@ -130,9 +127,9 @@ public class CrsAuthorithy {
 		
 		UserDetails userDetails = (UserDetails)authentication.getPrincipal();
 		
-		dtoJwt jwtDto = new dtoJwt(jwt, userDetails.getUsername(), userDetails.getAuthorities());
+		DtoJwt dtoJwt = new DtoJwt(jwt, userDetails.getUsername(), userDetails.getAuthorities());
 		
-		return new ResponseEntity<>(jwtDto, HttpStatus.OK);
+		return new ResponseEntity<>(dtoJwt, HttpStatus.OK);
 		
 	}	
 }

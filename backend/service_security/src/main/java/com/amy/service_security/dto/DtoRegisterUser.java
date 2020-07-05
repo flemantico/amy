@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-public class dtoRegisterUser {
+public class DtoRegisterUser {
 	@NotBlank
 	private String name;
 	@Email
