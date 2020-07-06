@@ -12,7 +12,6 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
 ---
-
 spring:
     profiles: primary
 server:
@@ -23,7 +22,6 @@ eureka:
       defaultZone: http://localhost:8012/eureka/,http://localhost:8013/eureka/
 
 ---
-
 spring:
     profiles: secondary
 server:
@@ -34,7 +32,6 @@ eureka:
       defaultZone: http://localhost:8013/eureka/,http://localhost:8011/eureka/
 
 ---
-
 spring:
     profiles: tertiary
 server:
