@@ -2,12 +2,11 @@ package com.amy.service_security;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableDiscoveryClient
+//@EnableDiscoveryClient // es lo mosmo que @EnableEurekaClient
 //@EnableFeignClients
 public class ServiceSecurityApplication {
 

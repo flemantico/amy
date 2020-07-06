@@ -1,0 +1,6 @@
+#endpoints:
+#    health:
+#        sensitive: true
+#management:
+#    security:
+#        enabled: true

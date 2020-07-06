@@ -36,7 +36,7 @@ import com.amy.service_security.util.enumerators.SenRoleName;
 @RestController
 @RequestMapping("/auth/v1")
 @CrossOrigin(origins ={"*"})
-//@CrossOrigin(origins = "http://192.168.100.14:4200")
+//@CrossOrigin(origins = "http://192.168.100.14:4200") Es el servidor del fornt que accedá a la API
 //@CrossOrigin(origins = "localhost:4200")
 public class CrsAuthorithy {
 	@Autowired

@@ -47,7 +47,14 @@ eureka:
     client:
         serviceUrl:
             defaultZone: http://localhost:8001/eureka/
-
+    instance:
+        instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#----------------------------------------------------------------------------------------------------------------------------------------
+#RIBBON No es necesario, se incluye la dependencia automáticamente desde eureka y se asignan las ip:port
+#service_product:
+#    ribbon:
+#        listOfServers: localhost:8103, localhost:8104
+            
 #----------------------------------------------------------------------------------------------------------------------------------------
 #TODO
 ##ver porque da error

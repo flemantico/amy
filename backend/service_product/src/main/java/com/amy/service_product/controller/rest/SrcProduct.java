@@ -1,12 +1,14 @@
 package com.amy.service_product.controller.rest;
 
 import java.util.List;
+//import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.core.env.Environment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 //import org.springframework.data.domain.Pageable;
@@ -42,6 +44,9 @@ import com.amy.service_product.util.exception.SecResourceNotFoundException;
 public class SrcProduct {
 	private final static Logger logger = LoggerFactory.getLogger(SrcProduct.class);
 	
+	//@Autowired
+	//private Environment env;// ver si puede ir en el constructor
+
 	@Autowired
 	private SntProduct sntProduct;
 	
@@ -65,7 +70,7 @@ public class SrcProduct {
     @GetMapping (value = "/getById/{id}")
     public ResponseEntity<MdlProduct> getOne(@PathVariable(value = "id") Integer id) throws SecResourceNotFoundException {
     	MdlProduct mdlProduct = sntProduct.findById(id).orElseThrow(() -> new SecResourceNotFoundException("Product not found for this id :: " + id));
-    	
+    	//mdlProduct.setPort(Integer.parseInt(env.getProperty("local.server.port")));
     	return ResponseEntity.ok(mdlProduct);
     }
     
@@ -73,7 +78,7 @@ public class SrcProduct {
     @GetMapping (value = "/getByName/{name}")
     public ResponseEntity<MdlProduct> getOne(@PathVariable(value = "name") String name) throws SecResourceNotFoundException {
     	MdlProduct mdlProduct = sntProduct.findByName(name).orElseThrow(() -> new SecResourceNotFoundException("Product not found for this name :: " + name));
-    	
+    	//mdlProduct.setPort(Integer.parseInt(env.getProperty("local.server.port")));
     	return ResponseEntity.ok(mdlProduct);
     }
     
@@ -87,6 +92,10 @@ public class SrcProduct {
 		}
 		logger.warn("list");
 		return ResponseEntity.ok(products);
+		//return ResponseEntity.ok(products.stream().map(mdlProduct -> {
+			//mdlProduct.setPort(Integer.parseInt(env.getProperty("local.server.port")));
+		//	return mdlProduct;
+		//}).collect(Collectors.toList()));
 	}
     
 	//http://localhost:8080/products/v1/create/[JSon]
@@ -96,7 +105,7 @@ public class SrcProduct {
 		if (result.hasErrors()) {
 			throw new SecResourceNotFoundException(SecErrorMessage.formatMessage("01", result) + "::" + mdlProduct.toString());
 		}
-
+		//mdlProduct.setPort(Integer.parseInt(env.getProperty("local.server.port")));
 		return ResponseEntity.ok(sntProduct.create(mdlProduct));
 	}
 	
@@ -108,11 +117,11 @@ public class SrcProduct {
 			throw new SecResourceNotFoundException(SecErrorMessage.formatMessage("02", result) + "::" + mdlProduct.toString());
 		}		
 
-		MdlProduct smcproduct = sntProduct.findById(mdlProduct.getId()).orElseThrow(() -> new SecResourceNotFoundException("Product not found for this id :: " + mdlProduct.getId()));
-    	smcproduct.setName(mdlProduct.getName());
-    	smcproduct.setPrice(mdlProduct.getPrice());
-		
-		return ResponseEntity.ok(sntProduct.update(smcproduct));
+		MdlProduct mdlproduct = sntProduct.findById(mdlProduct.getId()).orElseThrow(() -> new SecResourceNotFoundException("Product not found for this id :: " + mdlProduct.getId()));
+    	mdlproduct.setName(mdlProduct.getName());
+    	mdlproduct.setPrice(mdlProduct.getPrice());
+		//mdlproduct.setPort(Integer.parseInt(env.getProperty("local.server.port")));
+		return ResponseEntity.ok(sntProduct.update(mdlproduct));
 	}
 	
 	//http://localhost:8080/products/v1/update/1/[JSon]
@@ -123,11 +132,11 @@ public class SrcProduct {
 			throw new SecResourceNotFoundException(SecErrorMessage.formatMessage("02", result) + "::" + mdlProduct.toString());
 		}		
 
-		MdlProduct smcproduct = sntProduct.findById(id).orElseThrow(() -> new SecResourceNotFoundException("Product not found for this id :: " + id));
-    	smcproduct.setName(mdlProduct.getName());
-    	smcproduct.setPrice(mdlProduct.getPrice());
-		
-		return ResponseEntity.ok(sntProduct.update(smcproduct));
+		MdlProduct mdlproduct = sntProduct.findById(id).orElseThrow(() -> new SecResourceNotFoundException("Product not found for this id :: " + id));
+    	mdlproduct.setName(mdlProduct.getName());
+    	mdlproduct.setPrice(mdlProduct.getPrice());
+		//mdlproduct.setPort(Integer.parseInt(env.getProperty("local.server.port")));
+		return ResponseEntity.ok(sntProduct.update(mdlproduct));
 	}
 	
 	//http://localhost:8080/products/v1/delete/[JSon]
@@ -139,7 +148,7 @@ public class SrcProduct {
 		}	
     	MdlProduct smcProduct = sntProduct.findById(mdlProduct.getId()).orElseThrow(() -> new SecResourceNotFoundException("Product not found for this id :: " + mdlProduct.getId()));
     	sntProduct.delete(smcProduct);
-		
+		//mdlProduct.setPort(Integer.parseInt(env.getProperty("local.server.port")));
 		return ResponseEntity.ok(mdlProduct);
 	}
 	   
@@ -149,7 +158,7 @@ public class SrcProduct {
     public ResponseEntity<MdlProduct> delete(@PathVariable(value = "id") Integer id) throws SecResourceNotFoundException {
     	MdlProduct mdlProduct = sntProduct.findById(id).orElseThrow(() -> new SecResourceNotFoundException("Product not found for this id :: " + id));
     	sntProduct.delete(mdlProduct);
-    	
+    	//mdlProduct.setPort(Integer.parseInt(env.getProperty("local.server.port")));
     	return ResponseEntity.ok(mdlProduct);
     }	
 }
