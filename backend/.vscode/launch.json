@@ -1,0 +1,51 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ServerConfigApplication<server_config>",
+            "request": "launch",
+            "mainClass": "com.amy.server_config.ServerConfigApplication",
+            "projectName": "server_config"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ServerEurekaApplication<server_eureka>",
+            "request": "launch",
+            "mainClass": "com.amy.server_eureka.ServerEurekaApplication",
+            "projectName": "server_eureka"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch-8011)-ServerEurekaApplication<server_eureka>",
+            "request": "launch",
+            "mainClass": "com.amy.server_eureka.ServerEurekaApplication",
+            "projectName": "server_eureka"
+        },        
+/*        {
+            "type": "java",
+            "name": "Debug (Launch)-ServiceProductApplication<service_product>",
+            "request": "launch",
+            "mainClass": "com.amy.service_product.ServiceProductApplication",
+            "projectName": "service_product"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ServiceSecurityApplication<service_security>",
+            "request": "launch",
+            "mainClass": "com.amy.service_security.ServiceSecurityApplication",
+            "projectName": "service_security"
+        }
+*/
+    ]
+}
