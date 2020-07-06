@@ -27,13 +27,6 @@
         },
         {
             "type": "java",
-            "name": "Debug (Launch-8011)-ServerEurekaApplication<server_eureka>",
-            "request": "launch",
-            "mainClass": "com.amy.server_eureka.ServerEurekaApplication",
-            "projectName": "server_eureka"
-        },        
-/*        {
-            "type": "java",
             "name": "Debug (Launch)-ServiceProductApplication<service_product>",
             "request": "launch",
             "mainClass": "com.amy.service_product.ServiceProductApplication",
@@ -46,6 +39,5 @@
             "mainClass": "com.amy.service_security.ServiceSecurityApplication",
             "projectName": "service_security"
         }
-*/
     ]
 }
