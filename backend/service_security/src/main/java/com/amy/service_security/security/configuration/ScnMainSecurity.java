@@ -1,5 +1,7 @@
 package com.amy.service_security.security.configuration;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 //import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
@@ -34,6 +36,8 @@ import com.amy.service_security.service.interfaz.SntUser;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 //@EnableZuulProxy
 public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
+	private final static Logger logger = LoggerFactory.getLogger(ScnMainSecurity.class);
+
 	@Value("${jwt.auth_url}")
 	private String auth_url;
 
@@ -76,13 +80,13 @@ public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		
+		logger.warn("--" + auth_url + "--");
 		httpSecurity
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().cors()
 		.and().csrf().disable()
 		.authorizeRequests().antMatchers(HttpMethod.POST, auth_url ).permitAll()
-		//.and().antMatchers("/auth/**").permitAll()
+		//.authorizeRequests().antMatchers("/auth/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.exceptionHandling()
