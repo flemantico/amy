@@ -113,12 +113,12 @@ public class CrsAuthorithy {
 	//{"userName": "user", "password": "user"}
 	//para obtener el token
 	@RequestMapping("/login")
-	//public ResponseEntity<?> login(@Valid @RequestBody DtoLoguinUser dtoLoginUser, BindingResult bindingResult){
-	public ResponseEntity<DtoJwt> login(@Valid @RequestBody DtoLoguinUser dtoLoginUser, BindingResult bindingResult){
+	public ResponseEntity<?> login(@Valid @RequestBody DtoLoguinUser dtoLoginUser, BindingResult bindingResult){
+	//public ResponseEntity<DtoJwt> login(@Valid @RequestBody DtoLoguinUser dtoLoginUser, BindingResult bindingResult){
 		//dtoMessaje dtomessaje;
 		if (bindingResult.hasErrors()){
-			return new ResponseEntity(new DtoMessaje("campos mal puestos"), HttpStatus.BAD_REQUEST);
-			//return new ResponseEntity<>(new DtoMessaje("campos mal puestos"), HttpStatus.BAD_REQUEST);
+			//return new ResponseEntity(new DtoMessaje("campos mal puestos"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new DtoMessaje("campos mal puestos"), HttpStatus.BAD_REQUEST);
 		}
 		
 		//if(sntUser.existsByUserName(dtoLoginUser.getUserName()))
