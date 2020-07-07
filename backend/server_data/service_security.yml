@@ -54,12 +54,18 @@ jwt:
 #EUREKA
 eureka:
     client:
+        register-with-eureka: true
+        fetch-registry: true
         serviceUrl:
             defaultZone: http://localhost:8010/eureka/
     #ver si esto sirve
     instance:
         instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-
+#instance:
+#    hostname: localhost        
+        
+        
+        
 #Configuración para el log ---------------------------------------------------------------------------------------------------------------------
 
     main:

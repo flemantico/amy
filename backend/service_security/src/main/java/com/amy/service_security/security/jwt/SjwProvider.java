@@ -1,7 +1,7 @@
 package com.amy.service_security.security.jwt;
 
 import java.util.Date;
-import java.util.stream.Collectors;
+//import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.amy.service_security.model.MdlPrincipalUser;
 
-import io.jsonwebtoken.Claims;
+//import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
@@ -41,11 +41,12 @@ public class SjwProvider {
 		if (smdPrincipalUser.getAuthorities() == null || smdPrincipalUser.getAuthorities().isEmpty()) 
 			throw new IllegalArgumentException("User doesn't have any privileges.");
 
-		Claims claims = Jwts.claims().setSubject(smdPrincipalUser.getUsername());
-		claims.put("scopes", smdPrincipalUser.getAuthorities().stream().map(s -> s.toString()).collect(Collectors.toList()));
+		//si da error sacarlo del token
+		//Claims claims = Jwts.claims().setSubject(smdPrincipalUser.getUsername());
+		//claims.put("scopes", smdPrincipalUser.getAuthorities().stream().map(s -> s.toString()).collect(Collectors.toList()));
 		
 		return Jwts.builder()
-		.setClaims(claims)
+		//.setClaims(claims)
 		.setSubject(smdPrincipalUser.getUsername())
 		.setId(jti)
 		.setIssuer(issuer_info)

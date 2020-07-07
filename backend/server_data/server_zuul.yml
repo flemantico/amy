@@ -34,6 +34,7 @@ eureka:
 #ZUUL
 zuul:
     ignored-services: '*'
+    prefix: /amy
     routes:
         server_security:
             path: /security/**
@@ -46,6 +47,9 @@ zuul:
             service-id: service-product
             strip-prefix: false
 
+    #zuul.routes.middleware.path=/cart/**
+    #zuul.routes.middleware.url=http://localhost:8081/
+    
 #    routes:
 #        server_security:
 #            url: http://localhost:8020
