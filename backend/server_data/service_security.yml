@@ -46,7 +46,7 @@ jwt:
     login_url: /auth/loguin/**
     header_authorization_key: Authorization
     token_bearer_prefix: Bearer 
-    isssuer_info: https://www.amy.com
+    issuer_info: https://www.amy.com
 
 
 #----------------------------------------------------------------------------------------------------------------------------------------
