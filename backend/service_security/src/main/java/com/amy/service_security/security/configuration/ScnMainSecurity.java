@@ -1,6 +1,7 @@
 package com.amy.service_security.security.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 //import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.amy.service_security.security.jwt.SjwEntryPoint;
 import com.amy.service_security.security.jwt.SjwTokenFilter;
@@ -25,6 +27,7 @@ import com.amy.service_security.service.interfaz.SntUser;
 @EnableWebSecurity
 //Para indicar a que metodos puede accesder solo el administrador.
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableZuulProxy
 public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
 	@Autowired
 	SntUser ssiUser;
@@ -77,7 +80,20 @@ public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
 		.exceptionHandling()
 		.authenticationEntryPoint(swtEntryPoint)
 		.and()
-		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+
+		.and().formLogin()
+        .loginPage("/login")
+		.permitAll()
+
+		.and().logout()
+        .invalidateHttpSession(true)
+        .clearAuthentication(true)
+        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+        .logoutSuccessUrl("/login?logout")
+        .permitAll()
+
+		;
 				
 		/*
 		http
@@ -91,7 +107,7 @@ public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
         .anyRequest().authenticated()
         
 		.and().exceptionHandling()
-		.authenticationEntryPoint(jwtEntryPoint)
+		.authenticationEntryPoint(jwtEntryPoint) //SjwEntryPoint
 		
 		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)       
         

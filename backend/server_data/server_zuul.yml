@@ -1,0 +1,93 @@
+#----------------------------------------------------------------------------------------------------------------------------------------
+#SERVER
+server:
+    port: 8030
+
+spring:
+    profiles: default
+    application:
+        name: server_zuul
+
+    main:
+        banner-mode: off 
+    output:
+        ansi:
+            enabled: ALWAYS
+#----------------------------------------------------------------------------------------------------------------------------------------
+#EUREKA
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8010/eureka/
+    #ver si esto sirve
+    instance:
+        instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+#RIBBON No es necesario, se incluye la dependencia automáticamente desde eureka y se asignan las ip:port
+#service_security:
+#    ribbon:
+#        listOfServers: localhost:8103, localhost:8104
+
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+#ZUUL
+zuul:
+    ignored-services: '*'
+    routes:
+        server_security:
+            path: /security/**
+            sensitive-headers: null
+            service-id: server_security
+            strip-prefix: false
+        service-product:
+            path: /product/**
+            sensitive-headers: null
+            service-id: service-product
+            strip-prefix: false
+
+#    routes:
+#        server_security:
+#            url: http://localhost:8020
+#        service-product:
+#            url: http://localhost:8102
+#        service-user:
+#            url: http://localhost:8109
+    host:
+        connect-timeout-millis: 2000
+        socket-timeout-millis: 5000
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+    endpoint:
+        health:
+            show-details: ALWAYS
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+#RIBBON No es necesario, se incluye la dependencia automáticamente desde eureka y se asignan las ip:port
+#service_security:
+#    ribbon:
+#        listOfServers: localhost:8103, localhost:8104
+#ribbon:
+#    eureka:
+#        enabled: true
+#    connect:
+#        timeout: 60000
+#    read:
+#        timeout: 60000
+#Configuración para el log ---------------------------------------------------------------------------------------------------------------------
+
+
+#%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN: -%5p} %m%n
+#%clr(%d{yy-MM-dd E HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(${PID}){faint} %clr(---){faint} %clr([%8.15t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n
+#Default
+#%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}
+logging:
+    pattern:
+        console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN: -%5p} %m%n"
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+#TODO

@@ -38,31 +38,20 @@ spring:
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 #SECURITY
+#14400 (4hs) | 18000 (5hs) | 36000 (10hs)
 jwt:
     secret: secret
-    expiration: 36000
+    expiration: 14400
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 #EUREKA
 eureka:
     client:
         serviceUrl:
-            defaultZone: http://localhost:8001/eureka/
+            defaultZone: http://localhost:8010/eureka/
     #ver si esto sirve
     instance:
         instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-
-#----------------------------------------------------------------------------------------------------------------------------------------
-#RIBBON No es necesario, se incluye la dependencia automáticamente desde eureka y se asignan las ip:port
-#service_security:
-#    ribbon:
-#        listOfServers: localhost:8103, localhost:8104
-
-#----------------------------------------------------------------------------------------------------------------------------------------
-#TODO
-##ver porque da error
-##spring.jpa.hibernate.naming.physical-strategy=org.hibernate.cfg.ImprovedNamingStrategy
-
 
 #Configuración para el log ---------------------------------------------------------------------------------------------------------------------
 
@@ -79,3 +68,7 @@ logging:
     pattern:
         console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN: -%5p} %m%n"
 
+#----------------------------------------------------------------------------------------------------------------------------------------
+#TODO
+##ver porque da error
+##spring.jpa.hibernate.naming.physical-strategy=org.hibernate.cfg.ImprovedNamingStrategy

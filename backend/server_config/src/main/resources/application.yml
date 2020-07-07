@@ -5,17 +5,17 @@
 #    security:
 #        enabled: true
 
----
-spring:
-    profiles: primary
-words: 8011
+#---
+#spring:
+#    profiles: primary
+#words: 8011
 
----
-spring:
-    profiles: secondary
-words: 8012
+#---
+#spring:
+#    profiles: secondary
+#words: 8012
 
----
-spring:
-    profiles: tertiary
-words: 8013
+#---
+#spring:
+#    profiles: tertiary
+#words: 8013
