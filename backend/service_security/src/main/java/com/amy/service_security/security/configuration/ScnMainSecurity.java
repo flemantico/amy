@@ -1,10 +1,11 @@
 package com.amy.service_security.security.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 //import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -17,10 +18,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 //import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+//import org.springframework.web.cors.CorsConfiguration;
+//import org.springframework.web.cors.CorsConfigurationSource;
+//import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.amy.service_security.security.jwt.SjwEntryPoint;
 import com.amy.service_security.security.jwt.SjwTokenFilter;
 import com.amy.service_security.service.interfaz.SntUser;
+//import static com.amy.service_security.util.constant.Constants.AUTH_URL;
 
 //
 @Configuration
@@ -29,6 +34,9 @@ import com.amy.service_security.service.interfaz.SntUser;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 //@EnableZuulProxy
 public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
+	@Value("${jwt.auth_url}")
+	private String auth_url;
+
 	@Autowired
 	SntUser ssiUser;
 	@Autowired
@@ -52,8 +60,7 @@ public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(ssiUser)
-		.passwordEncoder(passwordEncoder());
+		auth.userDetailsService(ssiUser).passwordEncoder(passwordEncoder());
 	}
 
 	@Bean
@@ -68,19 +75,18 @@ public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
 	}
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		
-		http
-		.cors()
+		httpSecurity
+		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		.and().cors()
 		.and().csrf().disable()
-		.authorizeRequests()
-		.antMatchers("/auth/**").permitAll()
+		.authorizeRequests().antMatchers(HttpMethod.POST, auth_url ).permitAll()
+		//.and().antMatchers("/auth/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.exceptionHandling()
 		.authenticationEntryPoint(swtEntryPoint)
-		.and()
-		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
 		.and().formLogin()
         .loginPage("/login")
@@ -124,6 +130,13 @@ public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
         */
 		
 		//Pasar el usuario al contexto de autenticacion
-		http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-	}	
+		httpSecurity.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+	}
+
+	//@Bean
+	//CorsConfigurationSource corsConfigurationSource() {
+	//	final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+	//	source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+	//	return source;
+	//}
 }

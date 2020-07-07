@@ -17,6 +17,8 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
 
+//import static com.amy.service_security.util.constant.Constants.ISSUER_INFO;
+
 //Genera un token, con metodos de validacion
 @Component
 public class SjwProvider {
@@ -26,12 +28,15 @@ public class SjwProvider {
 	private String secret;
 	@Value("${jwt.expiration}")
 	private int expiration;
+	@Value("${jwt.issuer_info}")
+	private String issuer_info;
 	
 	public String generateToken(Authentication authentication) {
 		MdlPrincipalUser smdPrincipalUser = (MdlPrincipalUser) authentication.getPrincipal();
 
 		return Jwts.builder()
 		.setSubject(smdPrincipalUser.getUsername())
+		.setIssuer(issuer_info)
 		.setIssuedAt(new Date())
 		.setExpiration(new Date(new Date().getTime() + expiration  * 1000))
 		.signWith(SignatureAlgorithm.HS512, secret)

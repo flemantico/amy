@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,11 +18,19 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.amy.service_security.service.interfaz.SntUser;
 
+//import static com.amy.service_security.util.constant.Constants.TOKEN_BEARER_PREFIX;
+//import static com.amy.service_security.util.constant.Constants.HEADER_AUTHORIZACION_KEY;
 
 //Se ejecuta por cada peticion y verifica su validez para permitir el acceso al recurso
 public class SjwTokenFilter extends OncePerRequestFilter{
 
 	private final static Logger logger = LoggerFactory.getLogger(SjwTokenFilter.class);
+
+	@Value("${jwt.token_bearer_prefix}")
+	private String token_bearer_prefix;
+	@Value("${jwt.header_authorization_key}")
+	private String header_authorization_key;
+
 
 	@Autowired
 	SjwProvider swtProvider;
@@ -57,11 +66,11 @@ public class SjwTokenFilter extends OncePerRequestFilter{
 	}
 	
 	private String getToken(HttpServletRequest request) {
-		String header = request.getHeader("Authorization");
+		String header = request.getHeader(header_authorization_key);
 		logger.warn(header);
 		if(header != null && header.startsWith("Bearer")) {
 			logger.warn("getToken");
-			return header.replace("Bearer ", "");
+			return header.replace(token_bearer_prefix, "");
 		}else {
 			return null;	
 		}
