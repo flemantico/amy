@@ -41,32 +41,26 @@ public class SjwTokenFilter extends OncePerRequestFilter{
 			throws ServletException, IOException {
 		try {
 			String token = getToken(request);
-			logger.warn(token);
 			if(token != null && swtProvider.validateToken(token)) {
 				String userName = swtProvider.getUserNameFromToken(token);
 				
 				UserDetails userDetails = sntUser.loadUserByUsername(userName);
 				
-				UsernamePasswordAuthenticationToken authentication =
-				new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+				UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 				
-				//Asignamos el usuario al contexto de autebticacion
+				//Asignamos el usuario al contexto de autenticación
 				SecurityContextHolder.getContext().setAuthentication(authentication);
-				logger.warn("doFilterInternal OK");
 			}
 		} catch (Exception e) {
 			logger.error("Error en el metodo doFilterInternal " + e.getMessage());
 		}
 		
 		filterChain.doFilter(request, response);
-		logger.warn("doFilterInternal FIN");
 	}
 	
 	private String getToken(HttpServletRequest request) {
 		String header = request.getHeader(header_authorization_key);
-		logger.warn(header);
 		if(header != null && header.startsWith("Bearer")) {
-			logger.warn("getToken");
 			return header.replace(token_bearer_prefix, "");
 		}else {
 			return null;	

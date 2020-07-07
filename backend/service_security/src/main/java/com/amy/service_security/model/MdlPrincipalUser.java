@@ -26,8 +26,7 @@ public class MdlPrincipalUser implements UserDetails{
 
 	public static MdlPrincipalUser build(MdlUser user) {
 		List<GrantedAuthority> authorities =
-		user.getSmdRoles().stream()
-		.map(role -> new SimpleGrantedAuthority(role.getSenRoleName().name())).collect(Collectors.toList());
+		user.getSmdRoles().stream().map(role -> new SimpleGrantedAuthority(role.getSenRoleName().name())).collect(Collectors.toList());
 	
 		return new MdlPrincipalUser(user.getUserName(), user.getPassword(), authorities);
 	}
