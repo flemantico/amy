@@ -80,12 +80,14 @@ public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		logger.warn("--" + auth_url + "--");
+		logger.warn("--" + auth_url + "--"); 
 		httpSecurity
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().cors()
 		.and().csrf().disable()
-		.authorizeRequests().antMatchers(HttpMethod.POST, auth_url ).permitAll()
+		.authorizeRequests().antMatchers(HttpMethod.GET, auth_url ).permitAll()
+		//.and().authorizeRequests().antMatchers(HttpMethod.GET, auth_url ).permitAll()
+		//.authorizeRequests().antMatchers(HttpMethod.POST, auth_url ).permitAll()
 		//.authorizeRequests().antMatchers("/auth/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
