@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.amy.service_security.model.MdlUser;
 //import com.amy.security.security.jwt.JwtEntryPoint;
 import com.amy.service_security.service.interfaz.SntUser;
-import com.amy.service_security.util.exception.SecResourceNotFoundException;
+import com.amy.service_security.util.exception.UxcResourceNotFoundException;
 
 @RestController
 @RequestMapping(path = "/users/v1")
@@ -45,8 +45,8 @@ public class CrsUser {
 	
 	//http://localhost:8080/users/v1/findById/1
     @GetMapping (value = "/getOne/{id}")
-    public ResponseEntity<MdlUser> getOne(@PathVariable(value = "id") Integer id) throws SecResourceNotFoundException {
-    	MdlUser mmcUser = ssiuser.findById(id).orElseThrow(() -> new SecResourceNotFoundException("User not found for this id :: " + id));
+    public ResponseEntity<MdlUser> getOne(@PathVariable(value = "id") Integer id) throws UxcResourceNotFoundException {
+    	MdlUser mmcUser = ssiuser.findById(id).orElseThrow(() -> new UxcResourceNotFoundException("User not found for this id :: " + id));
 
     	//mmcUser.setId(mmcUser.getId());
     	//mmcUser.setUserName(mmcuser.getUserName());
@@ -57,7 +57,7 @@ public class CrsUser {
     
     //http://localhost:8080/users/v1/list
 	@GetMapping(value = "/list")
-	public List<MdlUser> list() throws SecResourceNotFoundException{
+	public List<MdlUser> list() throws UxcResourceNotFoundException{
 		logger.warn("list");
 		return ssiuser.list();
 	}
@@ -65,7 +65,7 @@ public class CrsUser {
 	//http://localhost:8080/users/v1/insert/[JSon]
 	@PostMapping (value = "/save")
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<MdlUser>  save(@Valid @RequestBody MdlUser mmcuser, BindingResult result) throws SecResourceNotFoundException{
+	public ResponseEntity<MdlUser>  save(@Valid @RequestBody MdlUser mmcuser, BindingResult result) throws UxcResourceNotFoundException{
     	//User mmcUser = ssiuser.findById(mmcuser.getId()).orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + mmcuser.getId()));
 
     	//mmcUser.setId(mmcuser.getId());
@@ -85,9 +85,9 @@ public class CrsUser {
     //http://localhost:8080/users/v1/deleteById/1
     @DeleteMapping("/deleteById/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<MdlUser> delete(@PathVariable(value = "id") Integer id) throws SecResourceNotFoundException {
+    public ResponseEntity<MdlUser> delete(@PathVariable(value = "id") Integer id) throws UxcResourceNotFoundException {
     	MdlUser user;
-    	user = ssiuser.findById(id).orElseThrow(() -> new SecResourceNotFoundException("User not found for this id :: " + id));
+    	user = ssiuser.findById(id).orElseThrow(() -> new UxcResourceNotFoundException("User not found for this id :: " + id));
     	ssiuser.deleteById(id);
     	return ResponseEntity.ok(user);
     }	

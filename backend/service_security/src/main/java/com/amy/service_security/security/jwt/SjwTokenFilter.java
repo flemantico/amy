@@ -18,9 +18,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.amy.service_security.service.interfaz.SntUser;
 
-//import static com.amy.service_security.util.constant.Constants.TOKEN_BEARER_PREFIX;
-//import static com.amy.service_security.util.constant.Constants.HEADER_AUTHORIZACION_KEY;
-
 //Se ejecuta por cada peticion y verifica su validez para permitir el acceso al recurso
 public class SjwTokenFilter extends OncePerRequestFilter{
 

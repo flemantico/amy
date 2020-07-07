@@ -80,7 +80,7 @@ public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		logger.warn("--" + auth_url + "--"); 
+		logger.warn("configure"); 
 		httpSecurity
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().cors()

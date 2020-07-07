@@ -31,7 +31,7 @@ import com.amy.service_security.model.MdlUser;
 import com.amy.service_security.security.jwt.SjwProvider;
 import com.amy.service_security.service.interfaz.SntRole;
 import com.amy.service_security.service.interfaz.SntUser;
-import com.amy.service_security.util.enumerators.SenRoleName;
+import com.amy.service_security.util.enumerators.UnmRoleName;
 
 @RestController
 @RequestMapping("/auth/v1")
@@ -91,15 +91,15 @@ public class CrsAuthorithy {
 		
 		Set<MdlRole> roles = new HashSet<>();
 		
-		roles.add(sntRole.findBySenRoleName(SenRoleName.ROLE_GUEST).get());
+		roles.add(sntRole.findBySenRoleName(UnmRoleName.ROLE_GUEST).get());
 
 		if(dtoRegisterUser.getRoles().contains("user")){
-			roles.add(sntRole.findBySenRoleName(SenRoleName.ROLE_USER).get());
+			roles.add(sntRole.findBySenRoleName(UnmRoleName.ROLE_USER).get());
 		}
 
 		if(dtoRegisterUser.getRoles().contains("admin")){
-			roles.add(sntRole.findBySenRoleName(SenRoleName.ROLE_USER).get());
-			roles.add(sntRole.findBySenRoleName(SenRoleName.ROLE_ADMIN).get());
+			roles.add(sntRole.findBySenRoleName(UnmRoleName.ROLE_USER).get());
+			roles.add(sntRole.findBySenRoleName(UnmRoleName.ROLE_ADMIN).get());
 		}
 
 		smdUser.setSmdRoles(roles);

@@ -10,13 +10,13 @@ import org.springframework.validation.BindingResult;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class SecErrorMessage {
+public class UxcErrorMessage {
     private String code ;
     private List<Map<String, String >> messages ;
     
-	public SecErrorMessage() {
+	public UxcErrorMessage() {
 	}
-	public SecErrorMessage(String code, List<Map<String, String>> messages) {
+	public UxcErrorMessage(String code, List<Map<String, String>> messages) {
 		this.code = code;
 		this.messages = messages;
 	}
@@ -41,7 +41,7 @@ public class SecErrorMessage {
 	                    return error;
 
 	                }).collect(Collectors.toList());
-            SecErrorMessage errorMessage = new SecErrorMessage(status, errors);
+            UxcErrorMessage errorMessage = new UxcErrorMessage(status, errors);
 	        
 	        ObjectMapper mapper = new ObjectMapper();
 	        String jsonString="";

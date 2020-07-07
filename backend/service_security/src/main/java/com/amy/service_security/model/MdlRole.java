@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import com.amy.service_security.util.enumerators.SenRoleName;
+import com.amy.service_security.util.enumerators.UnmRoleName;
 
 @Entity
 @Table(name = "roles")
@@ -26,12 +26,12 @@ public class MdlRole {
 	//@Size(min = 4, max = 15, message = "The role name must be between 4 and 15 characters.")
 	@Enumerated(EnumType.STRING)
 	//@Column(unique = true, nullable = false)
-	private SenRoleName senRoleName;
+	private UnmRoleName senRoleName;
 
 	public MdlRole() {
 	}
 
-	public MdlRole(@NotNull SenRoleName senRoleName) {
+	public MdlRole(@NotNull UnmRoleName senRoleName) {
 		this.senRoleName = senRoleName;
 	}
 
@@ -43,11 +43,11 @@ public class MdlRole {
 		this.id = id;
 	}
 
-	public SenRoleName getSenRoleName() {
+	public UnmRoleName getSenRoleName() {
 		return senRoleName;
 	}
 
-	public void setSenRoleName(SenRoleName senRoleName) {
+	public void setSenRoleName(UnmRoleName senRoleName) {
 		this.senRoleName = senRoleName;
 	}	
 }

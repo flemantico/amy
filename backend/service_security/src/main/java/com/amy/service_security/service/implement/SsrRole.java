@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.amy.service_security.model.MdlRole;
 import com.amy.service_security.repository.RpsRole;
 import com.amy.service_security.service.interfaz.SntRole;
-import com.amy.service_security.util.enumerators.SenRoleName;
+import com.amy.service_security.util.enumerators.UnmRoleName;
 
 
 @Service
@@ -39,7 +39,7 @@ public class SsrRole implements SntRole{
 	}
 
 	@Override
-	public Optional<MdlRole> findBySenRoleName(SenRoleName senRoleName) {
+	public Optional<MdlRole> findBySenRoleName(UnmRoleName senRoleName) {
 		return rpsRole.findBySenRoleName(senRoleName);
 	}	
 	
@@ -54,7 +54,7 @@ public class SsrRole implements SntRole{
 	}
 	
 	@Override
-	public boolean existsBySenRoleName(SenRoleName senRoleName) {
+	public boolean existsBySenRoleName(UnmRoleName senRoleName) {
 		return false;
 	}
 	

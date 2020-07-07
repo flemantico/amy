@@ -17,8 +17,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
 
-//import static com.amy.service_security.util.constant.Constants.ISSUER_INFO;
-
 //Genera un token, con metodos de validacion
 @Component
 public class SjwProvider {
