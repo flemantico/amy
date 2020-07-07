@@ -21,7 +21,9 @@ import io.jsonwebtoken.UnsupportedJwtException;
 @Component
 public class SjwProvider {
 	private final static Logger logger = LoggerFactory.getLogger(SjwProvider.class);
-
+	
+	@Value("${jwt.jti}")
+	private String jti;
 	@Value("${jwt.secret}")
 	private String secret;
 	@Value("${jwt.expiration}")
@@ -34,6 +36,7 @@ public class SjwProvider {
 
 		return Jwts.builder()
 		.setSubject(smdPrincipalUser.getUsername())
+		.setId(jti)
 		.setIssuer(issuer_info)
 		.setIssuedAt(new Date())
 		.setExpiration(new Date(new Date().getTime() + expiration  * 1000))

@@ -40,6 +40,7 @@ spring:
 #SECURITY
 #14400 (4hs) | 18000 (5hs) | 36000 (10hs)
 jwt:
+    jti:amy
     secret: s3cr3t
     expiration: 14400
     auth_url: /auth/**

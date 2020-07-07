@@ -39,6 +39,7 @@ import com.amy.service_security.util.enumerators.UnmRoleName;
 //@CrossOrigin(origins = "http://192.168.100.14:4200") Es el servidor del fornt que accedá a la API
 //@CrossOrigin(origins = "localhost:4200")
 public class CrsAuthorithy {
+
 	@Autowired
 	PasswordEncoder passwordEncoder;
 	@Autowired
@@ -112,13 +113,19 @@ public class CrsAuthorithy {
 	//{"userName": "user", "password": "user"}
 	//para obtener el token
 	@RequestMapping("/login")
-	public ResponseEntity<DtoJwt> login(@Valid @RequestBody DtoLoguinUser dtoLoginUser, BindingResult bindingResult){
+	public ResponseEntity<?> login(@Valid @RequestBody DtoLoguinUser dtoLoginUser, BindingResult bindingResult){
+	//public ResponseEntity<DtoJwt> login(@Valid @RequestBody DtoLoguinUser dtoLoginUser, BindingResult bindingResult){
 		//dtoMessaje dtomessaje;
 		if (bindingResult.hasErrors()){
-			DtoMessaje dtoMessage = new DtoMessaje("campos mal puestos");
-			return new ResponseEntity(dtoMessage, HttpStatus.BAD_REQUEST);
+			//return new ResponseEntity(dtoMessage, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new DtoMessaje("campos mal puestos"), HttpStatus.BAD_REQUEST);
 		}
 		
+		if(sntUser.existsByUserName(dtoLoginUser.getUserName()))
+			return new ResponseEntity<>(new DtoMessaje("el usuario no existe"), HttpStatus.BAD_REQUEST);
+		//falta verificar si el usuario existe en la db
+
+
 		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(dtoLoginUser.getUserName(), dtoLoginUser.getPassword()));
 		
 		SecurityContextHolder.getContext().setAuthentication(authentication);
