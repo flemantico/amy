@@ -42,6 +42,8 @@ public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
 	private String oauth_url;
 	@Value("${jwt.all_urls}")
 	private String all_urls;
+	@Value("${jwt.login_url}")
+	private String login_url;	
 
 	@Autowired
 	SntUser ssiUser;
@@ -87,9 +89,9 @@ public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().cors()
 		.and().csrf().disable()
-		//.authorizeRequests().antMatchers(HttpMethod.GET, oauth_url ).permitAll()
-		//.and().authorizeRequests().antMatchers(HttpMethod.POST, oauth_url ).permitAll()
-		.authorizeRequests().antMatchers("/oauth/**").permitAll()
+		.authorizeRequests().antMatchers(HttpMethod.GET, login_url ).permitAll()
+		.and().authorizeRequests().antMatchers(HttpMethod.POST, oauth_url ).permitAll()
+		//.authorizeRequests().antMatchers("/oauth/**").permitAll()
 		//.authorizeRequests().antMatchers().permitAll()
 		.anyRequest().authenticated()
 		//.antMatchers("/**").authenticated()
