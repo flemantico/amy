@@ -16,39 +16,33 @@ spring:
 #----------------------------------------------------------------------------------------------------------------------------------------
 #ZUUL
 zuul:
+    ignored-services: '*'
+    ignore-security-headers: false
+    host:
+        connect-timeout-millis: 2000
+        socket-timeout-millis: 5000
     #prefix: /amy
-    #sensitiveHeaders: Cookie,Set-Cookie
-    #ignored-services: '*'
-    routes:
-        server_security:
-            path: /oauth/v1/**
-            #url: http://localhost:8020/oauth/v1
-        #server_security:
-        #    path: /oauth/**
-        #    url: http://localhost:8020/oauth
-            #sensitive-headers: null
-            service-id: server_security
-            #strip-prefix: false
-        service_product:
-            path: /product/v1/**
-            #url: http://localhost:8102/product/v1
-            #sensitive-headers: null
-            service-id: service_product
-            #strip-prefix: false
+        routes:
+            server_security:
+                path: /oauth/v1/**
+                #url: http://localhost:8020/oauth/v1
+                url: server_security
+            #server_security:
+            #    path: /oauth/**
+            #    url: http://localhost:8020/oauth
+                #sensitive-headers: Cookie,Set-Cookie
+                service-id: server_security
+                #strip-prefix: false
+            service_product:
+                path: /product/v1/**
+                #url: http://localhost:8102/product/v1
+                url: service_product
+                #sensitive-headers: null
+                service-id: service_product
+                #strip-prefix: false
 
     #zuul.routes.middleware.path=/cart/**
     #zuul.routes.middleware.url=http://localhost:8081/
-    
-#    routes:
-#        server_security:
-#            url: http://localhost:8020
-#        service-product:
-#            url: http://localhost:8102
-#        service-user:
-#            url: http://localhost:8109
-    #host:
-    #    connect-timeout-millis: 2000
-    #    socket-timeout-millis: 5000
 
 #management:
 #    endpoints:
@@ -64,10 +58,10 @@ zuul:
 eureka:
     client:
         #No registrarse
-        #registerWhitEureka: false
+        register-whit-eureka: true
         #Obtener entradas de registro
-        #fetchRegistry: true
-        serviceUrl:
+        fetch-registry: true
+        service-url:
             defaultZone: http://localhost:8010/eureka/
     #ver si esto sirve
     instance:

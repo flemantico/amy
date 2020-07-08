@@ -43,10 +43,15 @@ jwt:
 #EUREKA
 eureka:
     client:
-        serviceUrl:
+        register-whit-eureka: true
+        fetch-registry: true
+        service-url:
             defaultZone: http://localhost:8010/eureka/
     instance:
         instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#instance:
+#    hostname: localhost
+
 #----------------------------------------------------------------------------------------------------------------------------------------
 #RIBBON No es necesario, se incluye la dependencia automáticamente desde eureka y se asignan las ip:port
 #service_product:
