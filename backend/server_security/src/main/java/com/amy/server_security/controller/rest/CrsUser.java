@@ -1,4 +1,4 @@
-package com.amy.service_security.controller.rest;
+package com.amy.server_security.controller.rest;
 
 import java.util.List;
 import javax.validation.Valid;
@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.amy.service_security.model.MdlUser;
+import com.amy.server_security.model.MdlUser;
 //import com.amy.security.security.jwt.JwtEntryPoint;
-import com.amy.service_security.service.interfaz.SntUser;
-import com.amy.service_security.util.exception.UxcResourceNotFoundException;
+import com.amy.server_security.service.interfaz.SntUser;
+import com.amy.server_security.util.exception.UxcResourceNotFoundException;
 
 @RestController
 @RequestMapping(path = "/users/v1")

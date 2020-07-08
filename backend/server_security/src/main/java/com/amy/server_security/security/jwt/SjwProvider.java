@@ -1,4 +1,4 @@
-package com.amy.service_security.security.jwt;
+package com.amy.server_security.security.jwt;
 
 import java.util.Date;
 //import java.util.stream.Collectors;
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import com.amy.service_security.model.MdlPrincipalUser;
+import com.amy.server_security.model.MdlPrincipalUser;
 
 //import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;

@@ -1,4 +1,4 @@
-package com.amy.service_security.model;
+package com.amy.server_security.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import com.amy.service_security.util.enumerators.UnmRoleName;
+import com.amy.server_security.util.enumerators.UnmRoleName;
 
 @Entity
 @Table(name = "roles")

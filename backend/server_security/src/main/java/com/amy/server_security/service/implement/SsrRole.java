@@ -1,4 +1,4 @@
-package com.amy.service_security.service.implement;
+package com.amy.server_security.service.implement;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.amy.service_security.model.MdlRole;
-import com.amy.service_security.repository.RpsRole;
-import com.amy.service_security.service.interfaz.SntRole;
-import com.amy.service_security.util.enumerators.UnmRoleName;
+import com.amy.server_security.model.MdlRole;
+import com.amy.server_security.repository.RpsRole;
+import com.amy.server_security.service.interfaz.SntRole;
+import com.amy.server_security.util.enumerators.UnmRoleName;
 
 
 @Service

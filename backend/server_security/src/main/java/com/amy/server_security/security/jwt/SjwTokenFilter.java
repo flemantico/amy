@@ -1,4 +1,4 @@
-package com.amy.service_security.security.jwt;
+package com.amy.server_security.security.jwt;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.amy.service_security.service.interfaz.SntUser;
+import com.amy.server_security.service.interfaz.SntUser;
 
 //Se ejecuta por cada peticion y verifica su validez para permitir el acceso al recurso
 public class SjwTokenFilter extends OncePerRequestFilter{

@@ -1,4 +1,4 @@
-package com.amy.service_security.controller.rest;
+package com.amy.server_security.controller.rest;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,16 +23,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.amy.service_security.dto.DtoJwt;
-import com.amy.service_security.dto.DtoLoguinUser;
-import com.amy.service_security.dto.DtoMessaje;
-import com.amy.service_security.dto.DtoRegisterUser;
-import com.amy.service_security.model.MdlRole;
-import com.amy.service_security.model.MdlUser;
-import com.amy.service_security.security.jwt.SjwProvider;
-import com.amy.service_security.service.interfaz.SntRole;
-import com.amy.service_security.service.interfaz.SntUser;
-import com.amy.service_security.util.enumerators.UnmRoleName;
+import com.amy.server_security.dto.DtoJwt;
+import com.amy.server_security.dto.DtoLoguinUser;
+import com.amy.server_security.dto.DtoMessaje;
+import com.amy.server_security.dto.DtoRegisterUser;
+import com.amy.server_security.model.MdlRole;
+import com.amy.server_security.model.MdlUser;
+import com.amy.server_security.security.jwt.SjwProvider;
+import com.amy.server_security.service.interfaz.SntRole;
+import com.amy.server_security.service.interfaz.SntUser;
+import com.amy.server_security.util.enumerators.UnmRoleName;
 
 @RestController
 @RequestMapping("/auth/v1")

@@ -1,12 +1,12 @@
-package com.amy.service_security.service.interfaz;
+package com.amy.server_security.service.interfaz;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.amy.service_security.model.MdlRole;
-import com.amy.service_security.util.enumerators.UnmRoleName;
+import com.amy.server_security.model.MdlRole;
+import com.amy.server_security.util.enumerators.UnmRoleName;
 
 @Service
 public interface SntRole {

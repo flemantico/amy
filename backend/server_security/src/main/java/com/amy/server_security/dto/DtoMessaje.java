@@ -1,4 +1,4 @@
-package com.amy.service_security.dto;
+package com.amy.server_security.dto;
 
 public class DtoMessaje {
 	private String message;

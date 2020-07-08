@@ -1,4 +1,4 @@
-package com.amy.service_security.security.configuration;
+package com.amy.server_security.security.configuration;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,10 +24,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 //import org.springframework.web.cors.CorsConfigurationSource;
 //import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.amy.service_security.security.jwt.SjwEntryPoint;
-import com.amy.service_security.security.jwt.SjwTokenFilter;
-import com.amy.service_security.service.interfaz.SntUser;
-//import static com.amy.service_security.util.constant.Constants.AUTH_URL;
+import com.amy.server_security.security.jwt.SjwEntryPoint;
+import com.amy.server_security.security.jwt.SjwTokenFilter;
+import com.amy.server_security.service.interfaz.SntUser;
+//import static com.amy.server_security.util.constant.Constants.AUTH_URL;
 
 //
 @Configuration

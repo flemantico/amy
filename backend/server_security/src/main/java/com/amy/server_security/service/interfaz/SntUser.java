@@ -1,4 +1,4 @@
-package com.amy.service_security.service.interfaz;
+package com.amy.server_security.service.interfaz;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.amy.service_security.model.MdlUser;
+import com.amy.server_security.model.MdlUser;
 
 //import com.amy.security.security.model.model.SmdUser;
 //import com.amy.security.security.service.repository.SsCUserRepository;

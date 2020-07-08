@@ -1,4 +1,4 @@
-package com.amy.service_security.model;
+package com.amy.server_security.model;
 
 import java.util.HashSet;
 import java.util.Set;

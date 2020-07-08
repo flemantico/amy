@@ -1,4 +1,4 @@
-package com.amy.service_security.util.enumerators;
+package com.amy.server_security.util.enumerators;
 
 /**
  * Enumerators for the control of user roles.

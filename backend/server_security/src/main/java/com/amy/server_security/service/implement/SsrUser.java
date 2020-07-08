@@ -1,4 +1,4 @@
-package com.amy.service_security.service.implement;
+package com.amy.server_security.service.implement;
 
 //import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +16,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.amy.service_security.model.MdlPrincipalUser;
-import com.amy.service_security.model.MdlUser;
-import com.amy.service_security.repository.RpsUser;
-import com.amy.service_security.service.interfaz.SntUser;
+import com.amy.server_security.model.MdlPrincipalUser;
+import com.amy.server_security.model.MdlUser;
+import com.amy.server_security.repository.RpsUser;
+import com.amy.server_security.service.interfaz.SntUser;
 
 
 @Service

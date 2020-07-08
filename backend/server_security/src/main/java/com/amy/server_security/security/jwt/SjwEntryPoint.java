@@ -1,4 +1,4 @@
-package com.amy.service_security.security.jwt;
+package com.amy.server_security.security.jwt;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.amy.service_security.util;
+package com.amy.server_security.util;
 
 
 public class Enviroment {}

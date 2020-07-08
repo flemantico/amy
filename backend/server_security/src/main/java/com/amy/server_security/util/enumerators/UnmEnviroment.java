@@ -1,4 +1,4 @@
-package com.amy.service_security.util.enumerators;
+package com.amy.server_security.util.enumerators;
 
 import java.util.HashMap;
 import java.util.Map;

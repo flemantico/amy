@@ -1,4 +1,4 @@
-package com.amy.service_security;
+package com.amy.server_security;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.amy.service_security.util.data;
+package com.amy.server_security.util.data;
 
 public class SutCreateRole{
 

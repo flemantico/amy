@@ -1,11 +1,11 @@
-package com.amy.service_security.repository;
+package com.amy.server_security.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.amy.service_security.model.MdlUser;
+import com.amy.server_security.model.MdlUser;
 
 @Repository
 public interface RpsUser extends JpaRepository<MdlUser, Integer>{

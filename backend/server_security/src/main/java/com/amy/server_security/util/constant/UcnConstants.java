@@ -1,4 +1,4 @@
-package com.amy.service_security.util.constant;
+package com.amy.server_security.util.constant;
 
 public final class UcnConstants {
     // Spring Security
