@@ -8,10 +8,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @EnableEurekaClient
 //@EnableDiscoveryClient // es lo mosmo que @EnableEurekaClient
 //@EnableFeignClients
-public class ServiceSecurityApplication {
+public class ServerSecurityApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ServiceSecurityApplication.class, args);
+		SpringApplication.run(ServerSecurityApplication.class, args);
 	}
 
 }
