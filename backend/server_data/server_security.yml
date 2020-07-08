@@ -43,8 +43,9 @@ jwt:
     jti: amy
     secret: s3cr3t
     expiration: 14400
-    auth_url: /auth/**
-    login_url: /auth/loguin/**
+    all_urls: /**
+    oauth_url: /oauth/**
+    login_url: /oauth/loguin/**
     header_authorization_key: Authorization
     token_bearer_prefix: Bearer 
     issuer_info: https://www.amy.com

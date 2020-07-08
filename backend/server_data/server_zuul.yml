@@ -33,19 +33,25 @@ eureka:
 #----------------------------------------------------------------------------------------------------------------------------------------
 #ZUUL
 zuul:
-    ignored-services: '*'
-    prefix: /amy
+    #ignored-services: '*'
+    #prefix: /amy
+    sensitiveHeaders: Cookie,Set-Cookie
     routes:
-        server_security:
-            path: /security/**
-            sensitive-headers: null
-            service-id: server_security
-            strip-prefix: false
+        oauth:
+            path: /oauth/**
+            url: http://localhost:8020/oauth
+        #server_security:
+        #    path: /oauth/**
+        #    url: http://localhost:8020/oauth
+            #sensitive-headers: null
+            #service-id: server_security
+            #strip-prefix: false
         service-product:
-            path: /product/**
-            sensitive-headers: null
-            service-id: service-product
-            strip-prefix: false
+            path: /products/**
+            url: http://localhost:8102/products
+            #sensitive-headers: null
+            #service-id: service-product
+            #strip-prefix: false
 
     #zuul.routes.middleware.path=/cart/**
     #zuul.routes.middleware.url=http://localhost:8081/
