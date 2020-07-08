@@ -63,6 +63,10 @@ zuul:
 #EUREKA
 eureka:
     client:
+        #No registrarse
+        #registerWhitEureka: false
+        #Obtener entradas de registro
+        #fetchRegistry: true
         serviceUrl:
             defaultZone: http://localhost:8010/eureka/
     #ver si esto sirve

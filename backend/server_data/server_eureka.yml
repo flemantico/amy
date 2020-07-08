@@ -11,6 +11,13 @@ eureka:
     fetch-registry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+logging:
+  level:
+    com:
+      netflix:
+        discovery: OFF
+        eureka: OFF
 #timeout
 #  server:
 #    wait-time-in-ms-when-sync-empty: 0
