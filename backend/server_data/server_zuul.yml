@@ -29,11 +29,11 @@ zuul:
             #sensitive-headers: null
             service-id: server_security
             #strip-prefix: false
-        service-product:
+        service_product:
             path: /product/v1/**
             #url: http://localhost:8102/product/v1
             #sensitive-headers: null
-            service-id: service-product
+            service-id: service_product
             #strip-prefix: false
 
     #zuul.routes.middleware.path=/cart/**
