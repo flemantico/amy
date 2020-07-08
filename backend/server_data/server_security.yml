@@ -42,7 +42,7 @@ jwt:
     expiration: 14400
     all_urls: /**
     oauth_url: /oauth/v1/**
-    login_url: /oauth/v1/login/**
+    login_url: /oauth/v1/loguin/**
     header_authorization_key: Authorization
     token_bearer_prefix: Bearer 
     issuer_info: https://www.amy.com
