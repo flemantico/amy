@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 //import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-//import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -87,9 +87,9 @@ public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().cors()
 		.and().csrf().disable()
-		//.authorizeRequests().antMatchers(HttpMethod.GET, oauth_url ).permitAll()
-		//.and().authorizeRequests().antMatchers(HttpMethod.POST, oauth_url ).permitAll()
-		.authorizeRequests().antMatchers("/auth/**").permitAll()
+		.authorizeRequests().antMatchers(HttpMethod.GET, oauth_url ).permitAll()
+		.and().authorizeRequests().antMatchers(HttpMethod.POST, oauth_url ).permitAll()
+		//.authorizeRequests().antMatchers("/auth/**").permitAll()
 		//.authorizeRequests().antMatchers().permitAll()
 		.anyRequest().authenticated()
 		//.antMatchers("/**").authenticated()

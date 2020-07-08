@@ -35,7 +35,7 @@ import com.amy.server_security.service.interfaz.SntUser;
 import com.amy.server_security.util.enumerators.UnmRoleName;
 
 @RestController
-@RequestMapping("/auth/v1")
+@RequestMapping("/oauth/v1")
 @CrossOrigin(origins ={"*"})
 //@CrossOrigin(origins = "http://192.168.100.14:4200") Es el servidor del fornt que accedá a la API
 //@CrossOrigin(origins = "localhost:4200")
