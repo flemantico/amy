@@ -20,7 +20,7 @@ zuul:
     #sensitiveHeaders: Cookie,Set-Cookie
     #ignored-services: '*'
     routes:
-        oauth:
+        server_security:
             path: /oauth/**
             url: http://localhost:8020/oauth
         #server_security:
@@ -30,8 +30,8 @@ zuul:
             #service-id: server_security
             #strip-prefix: false
         service-product:
-            path: /products/**
-            url: http://localhost:8102/products
+            path: /product/**
+            url: http://localhost:8102/product
             #sensitive-headers: null
             #service-id: service-product
             #strip-prefix: false

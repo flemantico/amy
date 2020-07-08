@@ -37,7 +37,7 @@ import com.amy.service_product.util.exception.SecResourceNotFoundException;
 //import com.amy.security.security.jwt.JwtEntryPoint;
 
 @RestController
-@RequestMapping(path = "/products/v1")
+@RequestMapping(path = "/product/v1")
 @CrossOrigin(origins ={"*"})
 //@RequestMapping (path = "/products/v1")//,  method = {RequestMethod.GET, RequestMethod.PUT})
 //@CrossOrigin (origins = "http://localhost:4200")
