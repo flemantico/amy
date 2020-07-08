@@ -7,11 +7,11 @@ spring:
     profiles: default
     application:
         name: server_zuul
-    main:
-        banner-mode: off
-    output:
-        ansi:
-            enabled: ALWAYS
+#    main:
+#        banner-mode: off
+#    output:
+#        ansi:
+#            enabled: ALWAYS
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 #ZUUL

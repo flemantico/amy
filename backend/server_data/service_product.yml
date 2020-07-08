@@ -1,18 +1,17 @@
 #----------------------------------------------------------------------------------------------------------------------------------------
 #SERVER
 server:
-    #port: 8102
-    port: 0
+    port: 8102
 
 spring:
     profiles: default
     application:
         name: service_product
-    main:
-        banner-mode: off
-    output:
-        ansi:
-            enabled: ALWAYS
+#    main:
+#        banner-mode: off
+#    output:
+#        ansi:
+#            enabled: ALWAYS
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 #DATABASE
@@ -33,11 +32,6 @@ spring:
                 dll-auto: true
                 use_sql_comments: false
                 format_sql: false
-    main:
-        banner-mode: off
-    output:
-        ansi:
-            enabled: ALWAYS
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 #SECURITY
@@ -72,7 +66,7 @@ eureka:
 #%clr(%d{yy-MM-dd E HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(${PID}){faint} %clr(---){faint} %clr([%8.15t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n
 #Default
 #%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}
-logging:
-    pattern:
-        console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN: -%5p} %m%n"
+#logging:
+#    pattern:
+#        console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN: -%5p} %m%n"
 
