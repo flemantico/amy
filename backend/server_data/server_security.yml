@@ -10,11 +10,11 @@ spring:
     profiles: default
     application:
         name: server_security
-    main:
-        banner-mode: off
-    output:
-        ansi:
-            enabled: ALWAYS        
+#    main:
+#        banner-mode: off
+#    output:
+#        ansi:
+#            enabled: ALWAYS        
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 #DATABASE
@@ -35,11 +35,6 @@ spring:
                 dll-auto: true
                 use_sql_comments: false
                 format_sql: false
-#    main:
-#        banner-mode: off
-#    output:
-#        ansi:
-#            enabled: ALWAYS
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 #SECURITY
