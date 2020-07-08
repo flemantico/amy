@@ -22,18 +22,18 @@ zuul:
     routes:
         server_security:
             path: /oauth/v1/**
-            url: http://localhost:8020/oauth/v1
+            #url: http://localhost:8020/oauth/v1
         #server_security:
         #    path: /oauth/**
         #    url: http://localhost:8020/oauth
             #sensitive-headers: null
-            #service-id: server_security
+            service-id: server_security
             #strip-prefix: false
         service-product:
             path: /product/v1/**
-            url: http://localhost:8102/product/v1
+            #url: http://localhost:8102/product/v1
             #sensitive-headers: null
-            #service-id: service-product
+            service-id: service-product
             #strip-prefix: false
 
     #zuul.routes.middleware.path=/cart/**
