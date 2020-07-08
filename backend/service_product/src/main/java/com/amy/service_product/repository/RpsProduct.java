@@ -2,10 +2,10 @@ package com.amy.service_product.repository;
 
 import java.util.Optional;
 
-import com.amy.service_product.model.MdlProduct;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.amy.service_product.model.MdlProduct;
 
 @Repository
 public interface RpsProduct extends JpaRepository<MdlProduct, Integer> {

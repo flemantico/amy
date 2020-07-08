@@ -12,8 +12,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.core.env.Environment;
 
 @Entity
 @Table(name = "products")
@@ -35,12 +35,15 @@ public class MdlProduct {
 	@Transient
 	private Integer port; //Para saber en
 
-	@Autowired
-	private Environment env;// ver si puede ir en el constructor
+	//@Autowired
+	//@Transient
+	//private Environment env;// ver si puede ir en el constructor
 
 	public MdlProduct() {
 		super();
-		this.port = Integer.parseInt(env.getProperty("local.server.port"));
+		//String env = this.env.getProperty("local.server.port");
+		//this.port = 0; //Integer.parseInt(env);
+
     }
     
 	public MdlProduct(String name, float price, Date created, Byte status) {
@@ -49,7 +52,8 @@ public class MdlProduct {
 		this.price = price;
 		this.created = created;
 		this.status = status;
-		this.port = Integer.parseInt(env.getProperty("local.server.port"));
+		//String env = this.env.getProperty("local.server.port");
+		//this.port = 0; //Integer.parseInt(env);
 	}
 
 	public int getId() {
