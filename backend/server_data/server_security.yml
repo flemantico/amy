@@ -10,6 +10,11 @@ spring:
     profiles: default
     application:
         name: server_security
+    main:
+        banner-mode: off
+    output:
+        ansi:
+            enabled: ALWAYS        
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 #DATABASE
@@ -66,14 +71,11 @@ eureka:
 #    hostname: localhost        
         
         
-        
+#----------------------------------------------------------------------------------------------------------------------------------------
+#LOG        
 #Configuración para el log ---------------------------------------------------------------------------------------------------------------------
 
-    main:
-        banner-mode: off 
-    output:
-        ansi:
-            enabled: ALWAYS
+
 #%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN: -%5p} %m%n
 #%clr(%d{yy-MM-dd E HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(${PID}){faint} %clr(---){faint} %clr([%8.15t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n
 #Default
