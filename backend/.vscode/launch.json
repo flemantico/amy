@@ -40,10 +40,10 @@
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-ServiceSecurityApplication<service_security>",
+            "name": "Debug (Launch)-ServerSecurityApplication<server_security>",
             "request": "launch",
-            "mainClass": "com.amy.service_security.ServiceSecurityApplication",
-            "projectName": "service_security"
+            "mainClass": "com.amy.server_security.ServiceSecurityApplication",
+            "projectName": "server_security"
         }
     ]
 }
