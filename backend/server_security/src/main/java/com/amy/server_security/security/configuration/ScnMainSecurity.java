@@ -53,10 +53,10 @@ public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
 		return new SjwTokenFilter();
 	}
 
-//	@Bean
-//	public BCryptPasswordEncoder passwordEncoder() {
-//		return new BCryptPasswordEncoder();
-//	}
+	//@Bean
+	//public BCryptPasswordEncoder passwordEncoder() {
+	//	return new BCryptPasswordEncoder();
+	//}
 
 
 	@Bean
@@ -89,10 +89,10 @@ public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
 		.and().csrf().disable()
 		//.authorizeRequests().antMatchers(HttpMethod.GET, oauth_url ).permitAll()
 		//.and().authorizeRequests().antMatchers(HttpMethod.POST, oauth_url ).permitAll()
-		.authorizeRequests().antMatchers("/oauth/**").permitAll()
+		.authorizeRequests().antMatchers("/auth/**").permitAll()
 		//.authorizeRequests().antMatchers().permitAll()
-		//.anyRequest().authenticated()
-		.antMatchers("/**").authenticated()
+		.anyRequest().authenticated()
+		//.antMatchers("/**").authenticated()
 		.and()
 		.exceptionHandling()
 		.authenticationEntryPoint(swtEntryPoint)
