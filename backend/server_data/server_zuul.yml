@@ -18,13 +18,24 @@ spring:
     cloud:
         gateway:
             routes:
-            - id: path_route
-              uri: http://localhost:8080/
+            - id: server_security
+              uri: http://localhost:8020/
               predicates:
-              - Path=/service/
+              - Path=/oauth/**
               filters:
-              - RewritePath=/service/, /
-
+              - RewritePath=/oauth/, /
+            - id: service_person
+              uri: http://localhost:8101/
+              predicates:
+              - Path=/person/**
+              filters:
+              - RewritePath=/person/, /
+            - id: service_product
+              uri: http://localhost:8102/
+              predicates:
+              - Path=/product/**
+              filters:
+              - RewritePath=/product/, /
 
 
 
