@@ -26,7 +26,7 @@ import com.amy.server_security.service.interfaz.SntUser;
 import com.amy.server_security.util.exception.UxcResourceNotFoundException;
 
 @RestController
-@RequestMapping(path = "/users/v1")
+@RequestMapping(path = "/oauth/users/v1")
 @CrossOrigin(origins ={"*"}) // desde cualquier url
 //@RequestMapping(path = "/users/v1",  method = {RequestMethod.GET, RequestMethod.PUT})
 //@CrossOrigin(origins ={"*"}, maxAge = 3600)
