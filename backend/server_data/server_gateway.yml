@@ -17,11 +17,11 @@ spring:
             routes:
             
             - id: server_security
-              uri: lb://oauth
+              uri: lb://server_security
               predicates:
               - Path=/oauth/**
-              filters:
-              - RewritePath=/oauth/, /
+              #filters:
+              #- RewritePath=/oauth/, /
               
             - id: service_person
               uri: http://localhost:8101/
