@@ -1,5 +1,10 @@
 package com.amy.server_zuul.filter;
 
+public class PreFilter{
+
+}
+
+/*
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 //import com.netflix.zuul.exception.ZuulException;
@@ -41,3 +46,4 @@ public class PreFilter extends ZuulFilter {
         return null;
     }
 }
+*/

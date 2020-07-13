@@ -3,8 +3,6 @@
 server:
     port: 8030
 
-
-
 spring:
     profiles: default
     application:
@@ -15,48 +13,33 @@ spring:
 #        ansi:
 #            enabled: ALWAYS
 
-    cloud:
-        gateway:
-            routes:
-            - id: path_route
-              uri: http://localhost:8080/
-              predicates:
-              - Path=/service/
-              filters:
-              - RewritePath=/service/, /
-
-
-
-
-
-
 #----------------------------------------------------------------------------------------------------------------------------------------
 #ZUUL
-#zuul:
-#    ignored-services: '*'
-#    ignore-security-headers: false
-#    host:
-#        connect-timeout-millis: 2000
-#        socket-timeout-millis: 5000
-#    #prefix: /amy
-#        routes:
-#            server_security:
-#                path: /oauth/v1/**
-#                #url: http://localhost:8020/oauth/v1
-#                url: server_security
-#            #server_security:
-#            #    path: /oauth/**
-#            #    url: http://localhost:8020/oauth
-#                #sensitive-headers: Cookie,Set-Cookie
-#                service-id: server_security
-#                #strip-prefix: false
-#            service_product:
-#                path: /product/v1/**
-#                #url: http://localhost:8102/product/v1
-#                url: service_product
-#                #sensitive-headers: null
-#                service-id: service_product
-#                #strip-prefix: false
+zuul:
+    ignored-services: '*'
+    ignore-security-headers: false
+    host:
+        connect-timeout-millis: 2000
+        socket-timeout-millis: 5000
+    #prefix: /amy
+        routes:
+            server_security:
+                path: /oauth/v1/**
+                #url: http://localhost:8020/oauth/v1
+                url: server_security
+            #server_security:
+            #    path: /oauth/**
+            #    url: http://localhost:8020/oauth
+                #sensitive-headers: Cookie,Set-Cookie
+                service-id: server_security
+                #strip-prefix: false
+            service_product:
+                path: /product/v1/**
+                #url: http://localhost:8102/product/v1
+                url: service_product
+                #sensitive-headers: null
+                service-id: service_product
+                #strip-prefix: false
 
     #zuul.routes.middleware.path=/cart/**
     #zuul.routes.middleware.url=http://localhost:8081/

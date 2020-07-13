@@ -21,12 +21,14 @@ public class SutCreateRole implements CommandLineRunner{
 	SssRoleService sssRoleService;
 	
 	@Override
-	public void run(String... args) throws Exception {
+	public void run(String... args) throws Exception { 
 		SmdRole rolAdmin = new SmdRole(SenRoleName.ROLE_ADMIN);
+		SmdRole rolAudit = new SmdRole(SenRoleName.ROLE_AUDIT);
 		SmdRole rolUser = new SmdRole(SenRoleName.ROLE_USER);
 		SmdRole rolGuest = new SmdRole(SenRoleName.ROLE_GUEST);
 		
 		sssRoleService.save(rolAdmin);
+		sssRoleService.save(rolAudit);
 		sssRoleService.save(rolUser);
 		sssRoleService.save(rolGuest);
 	}

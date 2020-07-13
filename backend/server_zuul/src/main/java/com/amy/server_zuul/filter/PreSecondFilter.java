@@ -1,5 +1,10 @@
 package com.amy.server_zuul.filter;
 
+public class PreSecondFilter{
+
+}
+
+/*
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.slf4j.Logger;
@@ -31,3 +36,4 @@ public class PreSecondFilter extends ZuulFilter {
         return null;
     }
 }
+*/

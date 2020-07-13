@@ -1,5 +1,10 @@
 package com.amy.server_zuul.filter;
 
+public class ErrorFilter {
+
+}
+
+/*
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.slf4j.Logger;
@@ -34,3 +39,4 @@ public class ErrorFilter extends ZuulFilter {
         return null;
     }
 }
+*/

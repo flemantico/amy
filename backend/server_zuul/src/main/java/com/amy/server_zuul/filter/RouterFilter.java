@@ -1,5 +1,10 @@
 package com.amy.server_zuul.filter;
 
+public class RouterFilter{
+
+}
+
+/*
 import com.netflix.zuul.ZuulFilter;
 //import com.netflix.zuul.context.RequestContext;
 import org.slf4j.Logger;
@@ -28,3 +33,4 @@ public class RouterFilter extends ZuulFilter {
         return null;
     }
 }
+*/

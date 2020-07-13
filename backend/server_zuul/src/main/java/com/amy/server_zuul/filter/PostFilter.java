@@ -1,5 +1,10 @@
 package com.amy.server_zuul.filter;
 
+public class PostFilter{
+
+}
+
+/*
 import com.google.common.io.CharStreams;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
@@ -54,3 +59,4 @@ public class PostFilter extends ZuulFilter {
         return null;
     }
 }
+*/
