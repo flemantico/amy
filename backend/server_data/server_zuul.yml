@@ -37,7 +37,26 @@ spring:
               filters:
               - RewritePath=/product/, /
 
+            - id: service_sales
+              uri: http://localhost:8103/
+              predicates:
+              - Path=/sales/**
+              filters:
+              - RewritePath=/sales/, /
 
+            - id: service_shopping
+              uri: http://localhost:8104/
+              predicates:
+              - Path=/shopping/**
+              filters:
+              - RewritePath=/shopping/, /
+
+            - id: service_stock
+              uri: http://localhost:8105/
+              predicates:
+              - Path=/stock/**
+              filters:
+              - RewritePath=/stock/, /
 
 
 
