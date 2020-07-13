@@ -20,12 +20,12 @@ spring:
             name: root
             password: s3cr3t
 
-eureka:
-    client:
-        register-with-eureka: true
-        fetch-registry: true
-        service-url:
-            defaultZone: http://localhost:8010/eureka/
-    #ver si esto sirve
-    instance:
-        instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#eureka:
+#    client:
+#        register-with-eureka: true
+#        fetch-registry: true
+#        service-url:
+#            defaultZone: http://localhost:8010/eureka/
+#    #ver si esto sirve
+#    instance:
+#        instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
