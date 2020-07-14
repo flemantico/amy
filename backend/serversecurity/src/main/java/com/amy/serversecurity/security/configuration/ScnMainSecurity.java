@@ -89,22 +89,21 @@ public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().cors()
 		.and().csrf().disable()
-		//.authorizeRequests().antMatchers(HttpMethod.GET, login_url ).permitAll()
-		//.and().authorizeRequests().antMatchers(HttpMethod.POST, oauth_url ).permitAll()
-		.authorizeRequests().antMatchers(oauth_url).permitAll()
-		//.authorizeRequests().antMatchers().permitAll()
-		//.anyRequest().authenticated()
-		//.antMatchers("/**").authenticated()
+
+		//aothorization
+		.authorizeRequests().antMatchers(HttpMethod.GET, login_url ).permitAll()
+		.and().authorizeRequests().antMatchers(oauth_url ).permitAll()
 		.antMatchers(all_urls).authenticated()
-		//.antMatchers(all_urls).permitAll()
-		.and()
-		.exceptionHandling()
-		.authenticationEntryPoint(swtEntryPoint)
 
-		//.and().formLogin()
-        //.loginPage("/login")
-		//.permitAll()
+		//exception
+		.and().exceptionHandling().authenticationEntryPoint(swtEntryPoint)
 
+		//login
+		.and().formLogin().loginPage("/login").permitAll()
+
+		.and().portMapper()
+
+		//logout
 		.and().logout()
         .invalidateHttpSession(true)
         .clearAuthentication(true)

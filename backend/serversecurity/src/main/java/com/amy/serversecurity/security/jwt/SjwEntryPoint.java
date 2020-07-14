@@ -21,9 +21,7 @@ public class SjwEntryPoint implements AuthenticationEntryPoint{
 	private final static Logger logger = LoggerFactory.getLogger(SjwEntryPoint.class);
 	
 	@Override
-	public void commence(HttpServletRequest request, HttpServletResponse response,
-			AuthenticationException authException) throws IOException, ServletException {
-
+	public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
 		logger.error("Error en el metodo commence: " + authException.getMessage());
 		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "no autorizado");
 	}

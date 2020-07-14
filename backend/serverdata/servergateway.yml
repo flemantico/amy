@@ -30,9 +30,9 @@ spring:
 #        ansi:
 #            enabled: ALWAYS
     cloud:
-        loadbalancer:
-          ribbon:
-            enabled: false
+        #loadbalancer:
+        #  ribbon:
+        #    enabled: false
         gateway:
         
             #loadbalancer:
@@ -41,12 +41,11 @@ spring:
             routes:
             
             - id: serversecurity
-              #uri: http://localhost:8020/
               uri: lb://serversecurity
               predicates:
-              - Path=/oauth/v1/login/**
-              #filters:
-              #- RewritePath=/oauth/, /
+              - Path=/oauth/**
+              filters:
+              - RewritePath=/oauth/, /
               
             - id: serviceperson
               uri: serviceperson
