@@ -22,17 +22,15 @@ eureka:
 
 spring:
     profiles: default
-    #application:
-    #    name: servergateway
 #    main:
 #        banner-mode: off
 #    output:
 #        ansi:
 #            enabled: ALWAYS
     cloud:
-        #loadbalancer:
-        #  ribbon:
-        #    enabled: false
+        loadbalancer:
+          ribbon:
+            enabled: false
         gateway:
         
             #loadbalancer:
