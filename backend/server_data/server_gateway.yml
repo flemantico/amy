@@ -42,7 +42,7 @@ spring:
             
             - id: server_security
               #uri: http://localhost:8020/
-              uri: lb://server_security
+              uri: lb://server-security
               predicates:
               - Path=/oauth/**
               filters:
