@@ -1,4 +1,18 @@
 #----------------------------------------------------------------------------------------------------------------------------------------
+#EUREKA
+eureka:
+    client:
+        #No registrarse
+        register-whit-eureka: true
+        #Obtener entradas de registro
+        fetch-registry: true
+        service-url:
+            defaultZone: http://localhost:8010/eureka/
+    #ver si esto sirve
+    instance:
+        instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+#----------------------------------------------------------------------------------------------------------------------------------------
 #SERVER
 server:
     port: 8030
@@ -66,20 +80,6 @@ spring:
               filters:
               - RewritePath=/stock/, /
 
-
-#----------------------------------------------------------------------------------------------------------------------------------------
-#EUREKA
-eureka:
-    client:
-        #No registrarse
-        register-whit-eureka: true
-        #Obtener entradas de registro
-        fetch-registry: true
-        service-url:
-            defaultZone: http://localhost:8010/eureka/
-    #ver si esto sirve
-    instance:
-        instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 #RIBBON No es necesario, se incluye la dependencia automáticamente desde eureka y se asignan las ip:port
