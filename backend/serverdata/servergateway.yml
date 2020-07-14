@@ -44,7 +44,7 @@ spring:
               #uri: http://localhost:8020/
               uri: lb://serversecurity
               predicates:
-              - Path=/oauth/**
+              - Path=/oauth/v1/**
               #filters:
               #- RewritePath=/oauth/, /
               
