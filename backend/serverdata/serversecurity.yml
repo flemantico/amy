@@ -5,8 +5,8 @@ server:
 
 spring:
     profiles: default
-    #application:
-    #    name: serversecurity
+    application:
+        name: serversecurity
 #    main:
 #        banner-mode: off
 #    output:
