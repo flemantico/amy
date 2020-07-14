@@ -45,39 +45,39 @@ spring:
               uri: lb://serversecurity
               predicates:
               - Path=/oauth/**
-              filters:
-              - RewritePath=/oauth/, /
+              #filters:
+              #- RewritePath=/oauth/, /
               
             - id: serviceperson
-              uri: http://localhost:8101/
+              uri: serviceperson
               predicates:
               - Path=/person/**
               filters:
               - RewritePath=/person/, /
               
             - id: serviceproduct
-              uri: http://localhost:8102/
+              uri: serviceproduct
               predicates:
               - Path=/product/**
               filters:
               - RewritePath=/product/, /
               
             - id: servicesales
-              uri: http://localhost:8103/
+              uri: servicesales
               predicates:
               - Path=/sales/**
               filters:
               - RewritePath=/sales/, /
               
             - id: serviceshopping
-              uri: http://localhost:8104/
+              uri: serviceshopping
               predicates:
               - Path=/shopping/**
               filters:
               - RewritePath=/shopping/, /
               
             - id: servicestock
-              uri: http://localhost:8105/
+              uri: servicestock
               predicates:
               - Path=/stock/**
               filters:
