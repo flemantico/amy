@@ -14,6 +14,10 @@ spring:
 #            enabled: ALWAYS
     cloud:
         gateway:
+        
+            loadbalancer:
+              use404: false 
+
             routes:
             
             - id: server_security
