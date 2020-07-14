@@ -1,3 +1,6 @@
+server:
+    port: 8030
+
 #----------------------------------------------------------------------------------------------------------------------------------------
 #EUREKA
 eureka:
@@ -14,8 +17,8 @@ eureka:
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 #SERVER
-server:
-    port: 8030
+#server:
+#    port: 8030
 
 spring:
     profiles: default
@@ -42,8 +45,8 @@ spring:
               uri: lb://server_security
               predicates:
               - Path=/oauth/**
-              #filters:
-              #- RewritePath=/oauth/, /
+              filters:
+              - RewritePath=/oauth/, /
               
             - id: service_person
               uri: http://localhost:8101/
