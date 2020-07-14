@@ -1,11 +1,17 @@
 #----------------------------------------------------------------------------------------------------------------------------------------
 #SERVER
+---
 server:
   port: 8010
 
 spring:
-    profiles:
-        active: default
+  profiles:
+    active: default
+  main:
+    banner-mode: off
+  output:
+    ansi:
+      enabled: ALWAYS
 eureka:
   instance:
     hostname: localhost
@@ -55,6 +61,15 @@ eureka:
 #    serviceUrl:
 #      defaultZone: http://localhost:8011/eureka/,http://localhost:8012/eureka/
 
+#----------------------------------------------------------------------------------------------------------------------------------------
+#LOG
+#%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN: -%5p} %m%n
+#%clr(%d{yy-MM-dd E HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(${PID}){faint} %clr(---){faint} %clr([%8.15t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n
+#Default
+#%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}
+logging:
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
 #----------------------------------------------------------------------------------------------------------------------------------------
 #TODO
 

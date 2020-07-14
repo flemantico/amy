@@ -1,0 +1,73 @@
+---
+#----------------------------------------------------------------------------------------------------------------------------------------
+#SERVER
+server:
+    port: 8020
+
+spring:
+    profiles: default
+    main:
+        banner-mode: off
+    output:
+        ansi:
+            enabled: ALWAYS
+
+    #----------------------------------------------------------------------------------------------------------------------------------------
+    #DATABASE
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        username: java
+        password: 19-FlemanticO-02
+        url: jdbc:mysql://localhost:3306/amy_security?useSSL=false
+        dbcp2:
+            validation-query: SELECT 1
+    jpa:
+        database: MYSQL
+        show-sql: true
+        generate-ddl: true
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
+                dll-auto: true
+                use_sql_comments: false
+                format_sql: false
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+#SECURITY
+#14400 (4hs) | 18000 (5hs) | 36000 (10hs)
+jwt:
+    jti: amy
+    secret: s3cr3t
+    expiration: 14400
+    all_urls: /**
+    oauth_url: /oauth/v1/**
+    login_url: /oauth/v1/login/**
+    header_authorization_key: Authorization
+    token_bearer_prefix: Bearer
+    issuer_info: https://www.amy.com
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+#EUREKA
+eureka:
+    client:
+        register-with-eureka: true
+        fetch-registry: true
+        service-url:
+            defaultZone: http://localhost:8010/eureka/
+    instance:
+        instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+#LOG
+#%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN: -%5p} %m%n
+#%clr(%d{yy-MM-dd E HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(${PID}){faint} %clr(---){faint} %clr([%8.15t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n
+#Default
+#%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}
+logging:
+    pattern:
+        console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+
+#----------------------------------------------------------------------------------------------------------------------------------------
+#TODO
+##ver porque da error
+##spring.jpa.hibernate.naming.physical-strategy=org.hibernate.cfg.ImprovedNamingStrategy

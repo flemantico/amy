@@ -1,30 +1,30 @@
+---
 #----------------------------------------------------------------------------------------------------------------------------------------
 #SERVER
----
 server:
-  port: 8030
+    port: 8030
 
 spring:
-  profiles: default
-  main:
-    banner-mode: off
-  output:
-    ansi:
-      enabled: ALWAYS
-  cloud:
-    loadbalancer:
-      ribbon:
-        enabled: false
-    gateway:
-      #loadbalancer:
-      #  use404: true
-      routes:
-        - id: serversecurity
-          uri: lb://serversecurity
-          predicates:
-            - Path=/oauth/**
-          #filters:
-          #- RewritePath=/oauth/, /
+    profiles: default
+    main:
+        banner-mode: off
+    output:
+        ansi:
+            enabled: ALWAYS
+    cloud:
+        loadbalancer:
+            ribbon:
+                enabled: false
+        gateway:
+            #loadbalancer:
+            #  use404: true
+            routes:
+                - id: serversecurity
+                  uri: lb://serversecurity
+                  predicates:
+                      - Path=/oauth/**
+                  #filters:
+                  #- RewritePath=/oauth/, /
 
 #            - id: serviceperson
 #              uri: serviceperson
@@ -64,15 +64,15 @@ spring:
 #----------------------------------------------------------------------------------------------------------------------------------------
 #EUREKA
 eureka:
-  client:
-    #No registrarse
-    register-whit-eureka: true
-    #Obtener entradas de registro
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8010/eureka/
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    client:
+        #No registrarse
+        register-whit-eureka: true
+        #Obtener entradas de registro
+        fetch-registry: true
+        service-url:
+            defaultZone: http://localhost:8010/eureka/
+    instance:
+        instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 #----------------------------------------------------------------------------------------------------------------------------------------
 #RIBBON No es necesario, se incluye la dependencia automáticamente desde eureka y se asignan las ip:port
@@ -96,7 +96,7 @@ eureka:
 #Default
 #%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}
 logging:
-  pattern:
-    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+    pattern:
+        console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
 #----------------------------------------------------------------------------------------------------------------------------------------
 #TODO
