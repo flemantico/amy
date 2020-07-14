@@ -22,8 +22,7 @@ spring:
             routes:
             
             - id: serversecurity
-              #uri: lb://serversecurity
-              uri: http://localhost:8020
+              uri: lb://serversecurity
               predicates:
               - Path=/oauth/**
               #filters:

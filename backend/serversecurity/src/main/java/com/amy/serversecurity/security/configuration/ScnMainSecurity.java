@@ -101,7 +101,7 @@ public class ScnMainSecurity extends WebSecurityConfigurerAdapter{
 		//login
 		.and().formLogin().loginPage("/login").permitAll()
 
-		.and().portMapper()
+		//.and().portMapper()
 
 		//logout
 		.and().logout()
