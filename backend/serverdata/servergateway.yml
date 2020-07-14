@@ -45,40 +45,40 @@ spring:
               filters:
               - RewritePath=/oauth/, /
               
-            - id: serviceperson
-              uri: serviceperson
-              predicates:
-              - Path=/person/**
-              filters:
-              - RewritePath=/person/, /
+#            - id: serviceperson
+#              uri: serviceperson
+#              predicates:
+#              - Path=/person/**
+#              filters:
+#              - RewritePath=/person/, /
               
-            - id: serviceproduct
-              uri: serviceproduct
-              predicates:
-              - Path=/product/**
-              filters:
-              - RewritePath=/product/, /
+#            - id: serviceproduct
+#              uri: serviceproduct
+#              predicates:
+#              - Path=/product/**
+#              filters:
+#              - RewritePath=/product/, /
               
-            - id: servicesales
-              uri: servicesales
-              predicates:
-              - Path=/sales/**
-              filters:
-              - RewritePath=/sales/, /
+#            - id: servicesales
+#              uri: servicesales
+#              predicates:
+#              - Path=/sales/**
+#              filters:
+#              - RewritePath=/sales/, /
               
-            - id: serviceshopping
-              uri: serviceshopping
-              predicates:
-              - Path=/shopping/**
-              filters:
-              - RewritePath=/shopping/, /
+#            - id: serviceshopping
+#              uri: serviceshopping
+#              predicates:
+#              - Path=/shopping/**
+#              filters:
+#              - RewritePath=/shopping/, /
               
-            - id: servicestock
-              uri: servicestock
-              predicates:
-              - Path=/stock/**
-              filters:
-              - RewritePath=/stock/, /
+#            - id: servicestock
+#              uri: servicestock
+#              predicates:
+#              - Path=/stock/**
+#              filters:
+#              - RewritePath=/stock/, /
 
 
 #----------------------------------------------------------------------------------------------------------------------------------------
