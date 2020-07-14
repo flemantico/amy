@@ -12,7 +12,7 @@ spring:
                     uri: https://github.com/flemantico/amy.git #file:/user/config/ #para archivo local
                     username: flemantico
                     password: 19FlemA02
-                    search-paths: backend/server_data
+                    search-paths: backend/serverdata
                 native:
                     search-locations: classpath:offline-repository/
     security:
