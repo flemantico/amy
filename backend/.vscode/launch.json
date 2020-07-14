@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ServerConfigApplication<server_config>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.amy.server_config.ServerConfigApplication",
+            "projectName": "server_config",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServerEurekaApplication<server_eureka>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.amy.server_eureka.ServerEurekaApplication",
+            "projectName": "server_eureka",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServerGatewayApplication<server_gateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.amy.server_gateway.ServerGatewayApplication",
+            "projectName": "server_gateway",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServerSecurityApplication<server_security>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.amy.server_security.ServerSecurityApplication",
+            "projectName": "server_security",
+            "args": ""
+        }
+    ]
+}

@@ -16,7 +16,7 @@ spring:
         gateway:
         
             loadbalancer:
-              use404: false 
+              use404: true 
 
             routes:
             
