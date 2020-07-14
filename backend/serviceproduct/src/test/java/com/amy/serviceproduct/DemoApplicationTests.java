@@ -1,4 +1,4 @@
-package com.amy.server_eureka;
+package com.amy.serviceproduct;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

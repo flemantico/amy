@@ -1,4 +1,4 @@
-package com.amy.server_security;
+package com.amy.serverconfig;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
