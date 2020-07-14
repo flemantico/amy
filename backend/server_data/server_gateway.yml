@@ -13,10 +13,13 @@ spring:
 #        ansi:
 #            enabled: ALWAYS
     cloud:
+        loadbalancer:
+          ribbon:
+            enabled: false
         gateway:
         
-            loadbalancer:
-              use404: true 
+            #loadbalancer:
+            #  use404: true 
 
             routes:
             
