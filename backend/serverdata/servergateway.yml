@@ -42,8 +42,8 @@ spring:
               uri: lb://serversecurity
               predicates:
               - Path=/oauth/**
-              filters:
-              - RewritePath=/oauth/, /
+              #filters:
+              #- RewritePath=/oauth/, /
               
 #            - id: serviceperson
 #              uri: serviceperson
