@@ -13,6 +13,8 @@ import java.util.Optional;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.amy.serversecurity.model.MdlUser;
@@ -35,6 +37,7 @@ public interface SntUser extends UserDetailsService{
 	Optional <MdlUser> findById(Integer id);
 	Optional <MdlUser> findByUserName(String userName);
 	List<MdlUser> list();
+	Page<MdlUser> findAll(Pageable pageable);
     boolean existsById(int id);
     boolean existsByUserName(String userName);
     boolean existsByEmail(String email);

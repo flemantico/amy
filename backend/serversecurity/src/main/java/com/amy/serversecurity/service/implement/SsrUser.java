@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,6 +60,12 @@ public class SsrUser implements SntUser{
 	public List<MdlUser> list() {
 		LOG.trace("list");		
 		return rpsUser.findAll();
+	}
+
+	@Override
+	public Page<MdlUser> findAll(Pageable pageable) {
+		LOG.trace("list");		
+		return rpsUser.findAll(pageable);
 	}
 
 	@Override

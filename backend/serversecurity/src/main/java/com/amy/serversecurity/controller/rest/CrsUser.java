@@ -6,6 +6,9 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,15 +42,31 @@ import com.amy.serversecurity.util.exception.UxcResourceNotFoundException;
 public class CrsUser {
 	private final static Logger logger = LoggerFactory.getLogger(CrsUser.class);
 	@Autowired
-	private SntUser ssiuser;
+	private SntUser sntuser;
 	
 	//@Autowired
 	//private BCryptPasswordEncoder bcpe;
+
+		//http://localhost:8080/products/v1/pages
+	//http://localhost:8080/products/v1/pages/?page/2/size/10/column/name/Ascending/false
+	@GetMapping(value = "/pages")
+	public ResponseEntity<Page<MdlUser>> pages(
+			@RequestParam (required = false, defaultValue = "0") int page,
+			@RequestParam (required = false, defaultValue = "10") int size,
+			@RequestParam (required = false, defaultValue = "name") String column,
+			@RequestParam (required = false, defaultValue = "true") boolean isAscending){
+		
+		Page<MdlUser> pages = sntuser.findAll(PageRequest.of(page, size, Sort.by(column)));
+		
+		if(!isAscending)
+		pages = sntuser.findAll(PageRequest.of(page, size, Sort.by(column).descending()));
+		return ResponseEntity.ok(pages);
+	}
 	
 	//http://localhost:8080/users/v1/findById/1
     @GetMapping (value = "/getOne/{id}")
     public ResponseEntity<MdlUser> getOne(@PathVariable(value = "id") Integer id) throws UxcResourceNotFoundException {
-    	MdlUser mmcUser = ssiuser.findById(id).orElseThrow(() -> new UxcResourceNotFoundException("User not found for this id :: " + id));
+    	MdlUser mmcUser = sntuser.findById(id).orElseThrow(() -> new UxcResourceNotFoundException("User not found for this id :: " + id));
 
     	//mmcUser.setId(mmcUser.getId());
     	//mmcUser.setUserName(mmcuser.getUserName());
@@ -59,27 +79,27 @@ public class CrsUser {
 	@GetMapping(value = "/list")
 	public List<MdlUser> list() throws UxcResourceNotFoundException{
 		logger.warn("list");
-		return ssiuser.list();
+		return sntuser.list();
 	}
 	
 	//http://localhost:8080/users/v1/insert/[JSon]
 	@PostMapping (value = "/save")
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<MdlUser>  save(@Valid @RequestBody MdlUser mmcuser, BindingResult result) throws UxcResourceNotFoundException{
-    	//User mmcUser = ssiuser.findById(mmcuser.getId()).orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + mmcuser.getId()));
+    	//User mmcUser = sntuser.findById(mmcuser.getId()).orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + mmcuser.getId()));
 
     	//mmcUser.setId(mmcuser.getId());
     	//mmcUser.setUserName(mmcuser.getUserName());
     	//mmcUser.setPassword(bcpe.encode(mmcUser.getPassword()));
 		
-		return ResponseEntity.ok(ssiuser.save(mmcuser));
+		return ResponseEntity.ok(sntuser.save(mmcuser));
 	}
 
 	//http://localhost:8080/users/v1/delete/[JSon]
 	@DeleteMapping(value = "/delete")
 	@PreAuthorize("hasRole('ADMIN')")
 	public void delete(@RequestBody MdlUser mmcUser){
-		ssiuser.delete(mmcUser);
+		sntuser.delete(mmcUser);
 	}
 	   
     //http://localhost:8080/users/v1/deleteById/1
@@ -87,8 +107,8 @@ public class CrsUser {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<MdlUser> delete(@PathVariable(value = "id") Integer id) throws UxcResourceNotFoundException {
     	MdlUser user;
-    	user = ssiuser.findById(id).orElseThrow(() -> new UxcResourceNotFoundException("User not found for this id :: " + id));
-    	ssiuser.deleteById(id);
+    	user = sntuser.findById(id).orElseThrow(() -> new UxcResourceNotFoundException("User not found for this id :: " + id));
+    	sntuser.deleteById(id);
     	return ResponseEntity.ok(user);
     }	
 }

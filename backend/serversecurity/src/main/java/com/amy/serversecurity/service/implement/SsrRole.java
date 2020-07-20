@@ -3,7 +3,11 @@ package com.amy.serversecurity.service.implement;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +20,7 @@ import com.amy.serversecurity.util.enumerators.UnmRoleName;
 @Service
 @Transactional
 public class SsrRole implements SntRole{
+	private static Logger LOG = LoggerFactory.getLogger(SsrUser.class);
 
 	@Autowired
 	private RpsRole rpsRole;
@@ -46,6 +51,12 @@ public class SsrRole implements SntRole{
 	@Override
 	public List<MdlRole> list() {
 		return null;
+	}
+
+	@Override
+	public Page<MdlRole> findAll(Pageable pageable) {
+		LOG.trace("list");		
+		return rpsRole.findAll(pageable);
 	}
 
 	@Override
